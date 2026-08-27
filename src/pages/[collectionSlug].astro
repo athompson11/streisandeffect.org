@@ -41,9 +41,9 @@ const { collection } = Astro.props;
     <h2>Documents</h2>
     {collection.documents.length === 0 ? (
       <article class="callout">
-        <h3>No public downloads yet</h3>
+        <h3>No documents listed</h3>
         <p>
-          The collection page is live as a scaffold, but specific document metadata and downloads have not been published. Add real documents only after provenance, checksums, storage mirrors, and legal/takedown process are ready.
+          This collection does not currently list documents. Collections add downloads only after provenance, checksums, storage mirrors, and legal/takedown review are documented.
         </p>
       </article>
     ) : (
@@ -61,7 +61,7 @@ const { collection } = Astro.props;
               <div><dt>Publisher</dt><dd>{document.publisher}</dd></div>
               <div><dt>Publication date</dt><dd>{document.publicationDate ?? 'Unknown'}</dd></div>
               <div><dt>File size</dt><dd>{formatBytes(document.fileSizeBytes)}</dd></div>
-              <div class="wide"><dt>SHA-256</dt><dd>{document.sha256 ? <code>{document.sha256}</code> : 'Pending'}</dd></div>
+              <div class="wide"><dt>SHA-256</dt><dd>{document.sha256 ? <code>{document.sha256}</code> : 'Not listed'}</dd></div>
             </dl>
             <p class="document-action"><a href={`/${collection.slug}/${document.slug}`}>View provenance and downloads →</a></p>
           </article>

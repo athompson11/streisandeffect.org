@@ -1,4 +1,4 @@
-export type DocumentStatus = 'available' | 'pending' | 'disputed' | 'temporarily-disabled';
+export type DocumentStatus = 'available' | 'needs-metadata' | 'disputed' | 'temporarily-disabled';
 
 export interface ArchiveDocument {
   slug: string;
@@ -72,7 +72,7 @@ export const archiveCollections: ArchiveCollection[] = [
         primaryDownloadUrl:
           '/documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf',
         mirrorUrls: [],
-        warnings: ['anti-trans organizing', 'anti-rights movement analysis', 'legal-pressure context pending citation']
+        warnings: ['anti-trans organizing', 'anti-rights movement analysis', 'reported legal-pressure context']
       },
       {
         slug: 'like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026',
@@ -111,7 +111,7 @@ export function getDocument(collectionSlug: string, documentSlug: string): Archi
 }
 
 export function formatBytes(bytes?: number): string {
-  if (bytes === undefined) return 'Pending';
+  if (bytes === undefined) return 'Not listed';
   if (bytes === 0) return '0 B';
 
   const units = ['B', 'KB', 'MB', 'GB', 'TB'];
@@ -128,8 +128,8 @@ export function documentStatusLabel(status: DocumentStatus): string {
   switch (status) {
     case 'available':
       return 'Available';
-    case 'pending':
-      return 'Metadata pending';
+    case 'needs-metadata':
+      return 'Needs metadata';
     case 'disputed':
       return 'Disputed';
     case 'temporarily-disabled':

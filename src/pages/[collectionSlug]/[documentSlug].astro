@@ -35,7 +35,7 @@ const { collection, document } = Astro.props;
         <tr><th>Collection</th><td><a href={`/${collection.slug}`}>{collection.title}</a></td></tr>
         <tr><th>Publisher</th><td>{document.publisher}</td></tr>
         <tr><th>Original URL</th><td>{document.originalUrl ? <a href={document.originalUrl}>{document.originalUrl}</a> : 'Unknown'}</td></tr>
-        <tr><th>Archived original</th><td>{document.archivedOriginalUrl ? <a href={document.archivedOriginalUrl}>{document.archivedOriginalUrl}</a> : 'Pending'}</td></tr>
+        <tr><th>Archived original</th><td>{document.archivedOriginalUrl ? <a href={document.archivedOriginalUrl}>{document.archivedOriginalUrl}</a> : 'Not listed'}</td></tr>
         <tr><th>Publication date</th><td>{document.publicationDate ?? 'Unknown'}</td></tr>
         <tr><th>Removal discovered</th><td>{document.removalDiscoveredDate ?? 'Unknown'}</td></tr>
       </tbody>
@@ -46,10 +46,10 @@ const { collection, document } = Astro.props;
     <h2>Verification</h2>
     <table class="meta-table">
       <tbody>
-        <tr><th>File name</th><td>{document.fileName ?? 'Pending'}</td></tr>
-        <tr><th>File type</th><td>{document.fileType ?? 'Pending'}</td></tr>
+        <tr><th>File name</th><td>{document.fileName ?? 'Not listed'}</td></tr>
+        <tr><th>File type</th><td>{document.fileType ?? 'Not listed'}</td></tr>
         <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)}</td></tr>
-        <tr><th>SHA-256</th><td>{document.sha256 ? <code class="checksum">{document.sha256}</code> : 'Pending'}</td></tr>
+        <tr><th>SHA-256</th><td>{document.sha256 ? <code class="checksum">{document.sha256}</code> : 'Not listed'}</td></tr>
       </tbody>
     </table>
     <p><a href="/verify">How to verify SHA-256 checksums →</a></p>
