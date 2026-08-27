@@ -1,0 +1,8 @@
+node_modules
+.astro
+.git
+.gitignore
+.hermes
+npm-debug.log*
+.env
+.env.*

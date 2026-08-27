@@ -1,0 +1,17 @@
+slug: example-candidate
+title: Example document title
+publisher: Example publisher
+submitted_at: YYYY-MM-DD
+submitted_by: null
+original_url: null
+archived_original_url: null
+candidate_reason: >-
+  Why this might be worth archiving.
+removal_or_suppression_context: >-
+  What suggests the document was deleted, hidden, altered, or made difficult to access.
+public_interest_rationale: >-
+  Why preservation would support accountability, research, criticism, or historical memory.
+source_copy_status: unknown
+risk_notes: []
+review_status: new
+review_notes: []

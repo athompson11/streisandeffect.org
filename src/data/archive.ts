@@ -42,19 +42,58 @@ export interface ArchiveCollection {
 export const archiveCollections: ArchiveCollection[] = [
   {
     slug: 'amnestyinternational',
-    title: 'Amnesty International Anti-Trans Reports Archive',
-    shortTitle: 'Amnesty International',
-    publisher: 'Amnesty International',
+    title: 'Amnesty International UK Anti-Rights Movement Reports Archive',
+    shortTitle: 'Amnesty International UK',
+    publisher: 'Amnesty International UK',
     status: 'active',
     summary:
-      'A public-interest archive for Amnesty International reports or materials that have been criticized as anti-trans and later removed, hidden, or made difficult to access.',
+      'A pro-trans public-interest archive for Amnesty International UK briefings on anti-rights and gender-critical movements in the UK, preserved because pressure from the gender-critical crowd should not be allowed to censor accountability documents.',
     contentWarning:
-      'This collection may include anti-trans claims, framing, or policy arguments. Hosting preserves the public record and does not imply endorsement.',
+      'This collection discusses anti-trans organizing, gender-critical political advocacy, and threats to the rights of women and LGBT+ people. The archive is explicitly pro-trans and preserves these documents so attempts to suppress criticism of anti-trans politics do not erase the public record.',
     editorialNote:
-      'This archive preserves materials for accountability, criticism, historical record, and research. It should distinguish original publication facts from editorial criticism and should link to relevant rebuttals or expert context when available.',
-    topics: ['trans rights', 'human rights organizations', 'public accountability', 'deleted documents'],
+      'These reports are preserved for accountability, criticism, historical record, and research after becoming candidates for preservation because of public controversy and pressure from gender-critical actors, including reported legal threats. The archive stands with trans people and against censorship campaigns that try to make pro-trans accountability documents disappear.',
+    topics: ['trans rights', 'pro-trans accountability', 'anti-rights movements', 'gender-critical pressure', 'public accountability'],
     archiveStarted: '2026-08-26',
-    documents: [],
+    documents: [
+      {
+        slug: 'a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026',
+        title: 'A growing threat: the anti-rights movement in the UK',
+        status: 'available',
+        publisher: 'Amnesty International UK',
+        publicationDate: 'July 2026',
+        summary:
+          'A 22-page Amnesty International UK briefing describing the UK anti-rights ecosystem, including anti-rights organizations, funding patterns, and links between gender-critical actors and broader attacks on the rights of women and LGBT+ people.',
+        whyHosted:
+          'Preserved because this report is part of the public record around UK anti-rights organizing and because pressure from the gender-critical crowd, including reported legal threats, should not be allowed to censor documents that condemn anti-trans politics. The archive hosts it from a pro-trans position for public-interest research, accountability, and criticism.',
+        fileName: 'a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf',
+        fileType: 'application/pdf',
+        fileSizeBytes: 353758,
+        sha256: 'd11534aa4fccdf0e19a4390b94586ec8ec23fbbac842acf03961bdbdf97cf387',
+        primaryDownloadUrl:
+          '/documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf',
+        mirrorUrls: [],
+        warnings: ['anti-trans organizing', 'anti-rights movement analysis', 'legal-pressure context pending citation']
+      },
+      {
+        slug: 'like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026',
+        title: 'Like a snowball: the growth and impact of the gender critical movement in the UK',
+        status: 'available',
+        publisher: 'Amnesty International UK',
+        publicationDate: 'May 2026',
+        summary:
+          'A 25-page Amnesty International UK briefing examining gender-critical actors in the UK, media coverage of trans people, and the movement’s relationship to wider anti-rights advocacy.',
+        whyHosted:
+          'Preserved because it documents a politically significant anti-trans movement affecting the rights and public treatment of trans people in the UK. The archive hosts it from a pro-trans position for public-interest research, accountability, and criticism, and to resist pressure campaigns that try to make criticism of gender-critical politics harder to find.',
+        fileName: 'like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf',
+        fileType: 'application/pdf',
+        fileSizeBytes: 411751,
+        sha256: 'f77a5315df3fa0204045d1d7ae2483ab57c075ea95674e96595edf3526144e5f',
+        primaryDownloadUrl:
+          '/documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf',
+        mirrorUrls: [],
+        warnings: ['anti-trans organizing', 'gender-critical movement analysis']
+      }
+    ],
     contextLinks: []
   }
 ];

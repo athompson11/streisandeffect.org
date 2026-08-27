@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: streisandeffect-web
+  namespace: streisandeffect
+spec:
+  type: ClusterIP
+  selector:
+    app.kubernetes.io/name: streisandeffect-web
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
