@@ -49,12 +49,9 @@ const collections = getCollections();
               <h3><a href={`/${collection.slug}`}>{collection.title}</a></h3>
               <p>{collection.summary}</p>
             </div>
-            <span class="badge">{collection.documents.length} documents</span>
+            <span class="document-count">{collection.documents.length} documents</span>
           </header>
-          <div class="badge-row">
-            {collection.topics.map((topic) => <span class="badge">{topic}</span>)}
-          </div>
-          <a href={`/${collection.slug}`}>Open collection →</a>
+          <p class="document-action"><a href={`/${collection.slug}`}>Open collection →</a></p>
         </article>
       ))}
     </div>

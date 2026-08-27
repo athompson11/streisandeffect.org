@@ -24,8 +24,7 @@ const { collection, document } = Astro.props;
     <h1>{document.title}</h1>
     <p class="lede">{document.summary}</p>
     <div class="badge-row">
-      <span class="badge">{documentStatusLabel(document.status)}</span>
-      {document.warnings.map((warning) => <span class="badge">{warning}</span>)}
+      <span class="status-badge">{documentStatusLabel(document.status)}</span>
     </div>
   </section>
 

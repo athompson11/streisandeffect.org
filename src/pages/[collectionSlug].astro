@@ -16,13 +16,10 @@ interface Props {
 const { collection } = Astro.props;
 ---
 <BaseLayout title={collection.title} description={collection.summary}>
-  <section class="prose">
+  <section class="collection-hero">
     <p class="eyebrow">Collection</p>
     <h1>{collection.title}</h1>
     <p class="lede">{collection.summary}</p>
-    <div class="badge-row">
-      {collection.topics.map((topic) => <span class="badge">{topic}</span>)}
-    </div>
   </section>
 
   {collection.contentWarning && (
@@ -58,17 +55,15 @@ const { collection } = Astro.props;
                 <h3><a href={`/${collection.slug}/${document.slug}`}>{document.title}</a></h3>
                 <p>{document.summary}</p>
               </div>
-              <span class="badge">{documentStatusLabel(document.status)}</span>
+              <span class="status-badge">{documentStatusLabel(document.status)}</span>
             </header>
-            <table class="meta-table">
-              <tbody>
-                <tr><th>Publisher</th><td>{document.publisher}</td></tr>
-                <tr><th>Publication date</th><td>{document.publicationDate ?? 'Unknown'}</td></tr>
-                <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)}</td></tr>
-                <tr><th>SHA-256</th><td>{document.sha256 ? <code class="checksum">{document.sha256}</code> : 'Pending'}</td></tr>
-              </tbody>
-            </table>
-            <p><a href={`/${collection.slug}/${document.slug}`}>View provenance and downloads →</a></p>
+            <dl class="document-meta">
+              <div><dt>Publisher</dt><dd>{document.publisher}</dd></div>
+              <div><dt>Publication date</dt><dd>{document.publicationDate ?? 'Unknown'}</dd></div>
+              <div><dt>File size</dt><dd>{formatBytes(document.fileSizeBytes)}</dd></div>
+              <div class="wide"><dt>SHA-256</dt><dd>{document.sha256 ? <code>{document.sha256}</code> : 'Pending'}</dd></div>
+            </dl>
+            <p class="document-action"><a href={`/${collection.slug}/${document.slug}`}>View provenance and downloads →</a></p>
           </article>
         ))}
       </div>
