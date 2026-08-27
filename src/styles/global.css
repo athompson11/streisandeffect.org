@@ -156,31 +156,31 @@ a:hover {
 h1,
 h2,
 h3 {
-  line-height: 1.1;
-  letter-spacing: -0.035em;
+  line-height: 1.12;
+  letter-spacing: -0.03em;
 }
 
 h1 {
-  max-width: 12ch;
+  max-width: 18ch;
   margin: 0;
-  font-size: clamp(3rem, 9vw, 6.7rem);
+  font-size: clamp(2.35rem, 5vw, 4.25rem);
 }
 
 h2 {
   margin: 0 0 1rem;
-  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-size: clamp(1.65rem, 3vw, 2.45rem);
 }
 
 h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.35rem;
+  font-size: 1.18rem;
 }
 
 .lede {
   max-width: 70ch;
   margin: 0;
   color: var(--muted);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
+  font-size: clamp(1.02rem, 1.5vw, 1.2rem);
 }
 
 .actions {
