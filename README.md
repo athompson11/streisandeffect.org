@@ -59,4 +59,4 @@ Public intake points people to `submissions@streisandeffect.org`, but the site i
 
 ## Deployment posture
 
-The intended deployment is a containerized static site behind Cloudflare and Traefik, with downloadable documents served from a Longhorn-backed Kubernetes PVC mounted at `/usr/share/nginx/html/documents`. Cloudflare provides DNS/CDN/WAF/DDoS protection; Longhorn keeps local archive documents persistent across web image redeploys.
+The intended deployment is a containerized static site behind Cloudflare and Traefik, with downloadable documents served from a Longhorn-backed Kubernetes PVC mounted at `/usr/share/nginx/html/documents`. The live Kubernetes/Argo CD manifests belong in `~/Documents/git/homelab-config/apps/streisandeffect/web` and are surfaced through the homelab app-of-apps under `~/Documents/git/homelab-config/clusters/homelab/apps`. Cloudflare provides DNS/CDN/WAF/DDoS protection; Longhorn keeps local archive documents persistent across web image redeploys.
