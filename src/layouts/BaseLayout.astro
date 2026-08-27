@@ -1,17 +1,43 @@
 ---
 import '../styles/global.css';
+import { getCollections } from '../data/archive';
 
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
 }
 
 const {
   title = 'streisandeffect.org',
-  description = 'A public-interest archive for deleted, suppressed, or hard-to-find documents.'
+  description = 'An independent pro-trans public-interest archive for withdrawn and hard-to-find documents.',
+  image = '/social-preview.svg'
 } = Astro.props;
 
 const pageTitle = title === 'streisandeffect.org' ? title : `${title} | streisandeffect.org`;
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://streisandeffect.org').toString();
+const imageUrl = new URL(image, Astro.site ?? 'https://streisandeffect.org').toString();
+const navItems = [
+  ['Collections', '/collections/'],
+  ['Submit', '/submit/'],
+  ['About', '/about/'],
+  ['Verify', '/verify/'],
+  ['Legal', '/legal/'],
+  ['Transparency', '/transparency/']
+];
+const footerItems = [
+  ...navItems,
+  ['Privacy', '/privacy/'],
+  ['Accessibility', '/accessibility/']
+];
+const collectionPrefixes = getCollections().map((collection) => `/${collection.slug}/`);
+const currentPath = Astro.url.pathname.endsWith('/') ? Astro.url.pathname : `${Astro.url.pathname}/`;
+
+function isCurrent(href: string): boolean {
+  if (href === '/') return currentPath === '/';
+  if (href === '/collections/') return currentPath.startsWith('/collections/') || collectionPrefixes.some((prefix) => currentPath.startsWith(prefix));
+  return currentPath.startsWith(href);
+}
 ---
 <!doctype html>
 <html lang="en">
@@ -19,6 +45,17 @@ const pageTitle = title === 'streisandeffect.org' ? title : `${title} | streisan
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="streisandeffect.org" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={imageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={imageUrl} />
     <title>{pageTitle}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
   </head>
@@ -26,17 +63,14 @@ const pageTitle = title === 'streisandeffect.org' ? title : `${title} | streisan
     <a class="skip-link" href="#content">Skip to content</a>
     <header class="site-header">
       <nav class="nav" aria-label="Main navigation">
-        <a class="brand" href="/" aria-label="streisandeffect.org home">
+        <a class="brand" href="/" aria-label="streisandeffect.org home" aria-current={Astro.url.pathname === '/' ? 'page' : undefined}>
           <span class="brand-mark">SE</span>
           <span>streisandeffect.org</span>
         </a>
         <div class="nav-links">
-          <a href="/collections">Collections</a>
-          <a href="/submit">Submit</a>
-          <a href="/about">About</a>
-          <a href="/verify">Verify</a>
-          <a href="/legal">Legal</a>
-          <a href="/transparency">Transparency</a>
+          {navItems.map(([label, href]) => (
+            <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>
+          ))}
         </div>
       </nav>
     </header>
@@ -46,11 +80,14 @@ const pageTitle = title === 'streisandeffect.org' ? title : `${title} | streisan
     </main>
 
     <footer class="site-footer">
+      <nav class="footer-links" aria-label="Footer navigation">
+        {footerItems.map(([label, href]) => <a href={href}>{label}</a>)}
+      </nav>
       <p>
-        Preserving records for public-interest research, criticism, accountability, and historical memory.
+        Independent preservation for public-interest research, criticism, accountability, and historical memory.
       </p>
       <p class="fine-print">
-        Hosting a document does not imply endorsement of its claims, framing, or conclusions.
+        Hosting a document does not imply endorsement of every claim, framing, or conclusion inside it.
       </p>
     </footer>
   </body>

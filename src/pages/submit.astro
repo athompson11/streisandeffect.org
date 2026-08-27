@@ -6,14 +6,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="eyebrow">Submission intake</p>
     <h1>Suggest a document for preservation</h1>
     <p class="lede">
-      Use this page to submit information about documents that may be worth archiving. Do not send files as the first step; send provenance, context, and links so the archive can review whether preservation is appropriate.
+      Send information about documents that may be worth archiving. A submission is a lead, not approval or automatic hosting.
     </p>
   </section>
 
   <section class="section callout warning">
-    <h2>No automatic hosting</h2>
+    <h2>Email is not a secure anonymous channel</h2>
     <p>
-      A submission is a lead, not approval. The archive should not store or publish every suggested document. Each candidate needs human review for public-interest value, provenance, legal risk, safety, and context.
+      Ordinary email may expose your address, routing metadata, and message contents to mail providers. Submissions are not automatically confidential. Do not use this channel for private, stolen, hacked, dangerous, or highly sensitive material.
     </p>
   </section>
 
@@ -23,7 +23,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       Email: <a href="mailto:submissions@streisandeffect.org">submissions@streisandeffect.org</a>
     </p>
     <p>
-      Send the document title, source links, context, and any safety or legal concerns. Please do not attach files unless the archive asks for them.
+      Send the document title, source links, publication context, removal or alteration context, and any safety or legal concerns. Do not attach files unless the archive asks for them.
     </p>
   </section>
 
@@ -31,7 +31,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <h2>What to include</h2>
     <ul class="kicker-list">
       <li>The document title, publisher, and publication date if known.</li>
-      <li>The original URL and any Internet Archive or other archived URL.</li>
+      <li>The original URL and any archived URL.</li>
       <li>Why the document appears to have been removed, hidden, altered, or made difficult to access.</li>
       <li>Why preservation is in the public interest.</li>
       <li>Relevant context, criticism, or rebuttals that should appear near the document.</li>
@@ -41,12 +41,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="section prose">
-    <h2>What not to send first</h2>
+    <h2>What not to send</h2>
     <ul class="kicker-list">
-      <li>Do not send private personal information.</li>
-      <li>Do not send hacked, stolen, or unlawfully obtained material.</li>
-      <li>Do not send malware, exploit code, or active tracking files.</li>
-      <li>Do not attach large files unless the archive has asked for them.</li>
+      <li>Private personal information.</li>
+      <li>Doxxing or material likely to create a serious safety risk.</li>
+      <li>Hacked, stolen, or unlawfully obtained private material.</li>
+      <li>Malware, exploit code, tracking files, or dangerous files.</li>
+      <li>Large attachments unless the archive asks for them.</li>
     </ul>
   </section>
 
@@ -55,9 +56,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <table class="meta-table">
       <tbody>
         <tr><th>Public interest</th><td>Does preserving this document help accountability, research, criticism, or historical memory?</td></tr>
-        <tr><th>Provenance</th><td>Can the archive identify where the document came from and whether the copy is authentic?</td></tr>
+        <tr><th>Provenance</th><td>Can the archive identify where the document came from and whether the copy is authentic enough to present?</td></tr>
         <tr><th>Context</th><td>Can the archive explain the document without endorsing harmful or contested claims?</td></tr>
         <tr><th>Risk</th><td>Are there legal, privacy, safety, or provider-policy risks that need review before hosting?</td></tr>
+        <tr><th>Retention</th><td>Submission messages may be retained while evaluating the lead and documenting any resulting archive record. A fixed retention schedule is not currently published.</td></tr>
       </tbody>
     </table>
   </section>

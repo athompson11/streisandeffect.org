@@ -1,42 +1,41 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="Legal and takedown process" description="Legal notice, takedown, and correction process for streisandeffect.org.">
+<BaseLayout title="Legal and correction process" description="Copyright, privacy, safety, provenance, correction, and legal complaint process for streisandeffect.org.">
   <section class="prose">
-    <p class="eyebrow">Legal process</p>
-    <h1>Takedown and correction requests</h1>
+    <p class="eyebrow">Legal and corrections</p>
+    <h1>Takedown, correction, and context requests</h1>
     <p class="lede">
-      streisandeffect.org preserves public-interest records, but it will review credible legal, privacy, safety, provenance, and correction requests.
+      streisandeffect.org reviews credible copyright, privacy, safety, provenance, factual, contextual, defamation, and other legal complaints.
     </p>
   </section>
 
   <section class="section callout warning">
     <h2>Not legal advice</h2>
     <p>
-      This page describes the archive’s operational review process. It is not legal advice and does not waive any rights, defenses, or remedies.
+      This page describes the archive’s operational review process. It is not legal advice and does not claim any legal protection or eligibility that has not been verified.
     </p>
   </section>
 
   <section class="section prose">
-    <h2>Archive position</h2>
+    <h2>Request categories</h2>
     <ul class="kicker-list">
-      <li>The archive preserves documents for research, criticism, accountability, and historical record.</li>
-      <li>Hosting a file does not imply endorsement of its claims, framing, or conclusions.</li>
-      <li>The archive will review valid legal notices and credible correction requests.</li>
-      <li>The archive may correct metadata, add context, temporarily disable downloads, remove files, or replace files when justified.</li>
-      <li>The archive may contest false, abusive, or viewpoint-discriminatory takedown demands.</li>
-      <li>The archive may publish transparency information about requests when safe and lawful.</li>
+      <li><strong>Copyright:</strong> claims about ownership, licensing, infringement, or replacement copies.</li>
+      <li><strong>Privacy and safety:</strong> requests involving personal information, doxxing, risk of harm, or sensitive data.</li>
+      <li><strong>Provenance correction:</strong> source, date, chain-of-custody, file metadata, or checksum corrections.</li>
+      <li><strong>Factual or contextual correction:</strong> missing context, misleading summaries, or disputed descriptions.</li>
+      <li><strong>Defamation or other legal complaint:</strong> legal claims not covered above.</li>
     </ul>
   </section>
 
   <section class="section prose">
-    <h2>What to include in a request</h2>
+    <h2>What to include</h2>
     <p>Send enough information for human review:</p>
     <ul class="kicker-list">
       <li>Your name and organization, if applicable.</li>
       <li>The exact streisandeffect.org URL at issue.</li>
       <li>The exact file, metadata field, or statement you are challenging.</li>
-      <li>Whether the request is legal, copyright, privacy, safety, factual correction, or contextual correction.</li>
+      <li>The request category.</li>
       <li>Evidence supporting the request.</li>
       <li>The specific action requested: correction, added context, temporary disabling, removal, or replacement.</li>
     </ul>
@@ -52,5 +51,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <li>Decide whether to correct metadata, add context, temporarily disable downloads, remove material, reject the request, or seek counsel.</li>
       <li>Record the outcome for the transparency log when appropriate.</li>
     </ol>
+  </section>
+
+  <section class="section prose">
+    <h2>Versioned correction policy</h2>
+    <ul class="kicker-list">
+      <li>Metadata corrections are dated.</li>
+      <li>Material contextual changes are recorded.</li>
+      <li>Files are not silently replaced.</li>
+      <li>Replacement files receive new hashes and version information.</li>
+      <li>Previous metadata states remain documented when safe.</li>
+    </ul>
   </section>
 </BaseLayout>

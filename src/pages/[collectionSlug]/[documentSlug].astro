@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { documentStatusLabel, formatBytes, getCollections, hasDownloads, type ArchiveCollection, type ArchiveDocument } from '../../data/archive';
+import { formatBytes, getCollections, hasDownloads, type ArchiveCollection, type ArchiveDocument } from '../../data/archive';
 
 export function getStaticPaths() {
   return getCollections().flatMap((collection) =>
@@ -17,58 +17,164 @@ interface Props {
 }
 
 const { collection, document } = Astro.props;
+const pageUrl = new URL(`/${collection.slug}/${document.slug}/`, Astro.site ?? 'https://streisandeffect.org').toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'DigitalDocument',
+  name: document.title,
+  description: document.neutralDescription,
+  publisher: document.publisher,
+  datePublished: document.bestKnownPublicationDate ?? document.publicationDate,
+  dateModified: document.lastReviewed,
+  encodingFormat: document.fileType,
+  contentSize: String(document.fileSizeBytes),
+  url: pageUrl,
+  associatedMedia: {
+    '@type': 'MediaObject',
+    contentUrl: new URL(document.primaryDownloadUrl, Astro.site ?? 'https://streisandeffect.org').toString(),
+    sha256: document.sha256,
+    encodingFormat: document.fileType
+  }
+};
 ---
-<BaseLayout title={document.title} description={document.summary}>
+<BaseLayout title={document.title} description={document.neutralDescription}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
   <section class="prose">
-    <p class="eyebrow">Document</p>
+    <p class="eyebrow">Document metadata</p>
     <h1>{document.title}</h1>
-    <p class="lede">{document.summary}</p>
-    <div class="badge-row">
-      <span class="status-badge">{documentStatusLabel(document.status)}</span>
+    <p class="lede">{document.neutralDescription}</p>
+    <p class="last-reviewed">Last metadata review: {document.lastReviewed}</p>
+    <div class="status-banner" role="note" aria-label="Document status">
+      <div>
+        <strong>Publisher status</strong>
+        <p>{document.publisherStatus}</p>
+      </div>
+      <div>
+        <strong>Archive status</strong>
+        <p>{document.archiveStatus}</p>
+      </div>
     </div>
   </section>
 
+  <section class="section publisher-callout">
+    <span class="layer-label">Publisher statement</span>
+    <h2>Publisher’s current position</h2>
+    <p>{document.publisherCurrentPosition}</p>
+    <p>
+      Amnesty’s statement says the July report bypassed internal review and fell short of its research and editorial standards. This archive does not imply that either withdrawn report remains endorsed by Amnesty International UK.
+    </p>
+    <p><a href="https://www.amnesty.org.uk/briefing-review/">Read Amnesty International UK’s statement →</a></p>
+  </section>
+
   <section class="section metadata-panel">
+    <span class="layer-label">Provenance</span>
     <h2>Provenance</h2>
-    <table class="meta-table">
+    <table class="meta-table provenance-table">
       <tbody>
-        <tr><th>Collection</th><td><a href={`/${collection.slug}`}>{collection.title}</a></td></tr>
+        <tr><th>Collection</th><td><a href={`/${collection.slug}/`}>{collection.title}</a></td></tr>
         <tr><th>Publisher</th><td>{document.publisher}</td></tr>
-        <tr><th>Original URL</th><td>{document.originalUrl ? <a href={document.originalUrl}>{document.originalUrl}</a> : 'Unknown'}</td></tr>
-        <tr><th>Archived original</th><td>{document.archivedOriginalUrl ? <a href={document.archivedOriginalUrl}>{document.archivedOriginalUrl}</a> : 'Not listed'}</td></tr>
-        <tr><th>Publication date</th><td>{document.publicationDate ?? 'Unknown'}</td></tr>
-        <tr><th>Removal discovered</th><td>{document.removalDiscoveredDate ?? 'Unknown'}</td></tr>
+        <tr><th>Publication date</th><td>{document.bestKnownPublicationDate ?? document.publicationDate}</td></tr>
+        <tr><th>Publisher status</th><td>{document.publisherStatus}</td></tr>
+        <tr><th>Removal status</th><td>{document.removalStatus}</td></tr>
+        <tr><th>Removal discovered</th><td>{document.removalDiscoveredDate ?? 'Not listed'}</td></tr>
+        <tr><th>Archive obtained</th><td>{document.archiveObtainedDate}</td></tr>
+        <tr><th>How copy was obtained</th><td>{document.copyObtainedHow}</td></tr>
+        <tr><th>Original URL</th><td>{document.originalUrl ? <a href={document.originalUrl}>{document.originalUrl}</a> : document.originalUrlNote}</td></tr>
+        <tr><th>Archived original URL</th><td>{document.archivedOriginalUrl ? <a href={document.archivedOriginalUrl}>{document.archivedOriginalUrl}</a> : document.archivedOriginalUrlNote}</td></tr>
       </tbody>
     </table>
   </section>
 
   <section class="section metadata-panel">
-    <h2>Verification</h2>
-    <table class="meta-table">
+    <span class="layer-label">Verification</span>
+    <h2>Verification data</h2>
+    <table class="meta-table provenance-table">
       <tbody>
-        <tr><th>File name</th><td>{document.fileName ?? 'Not listed'}</td></tr>
-        <tr><th>File type</th><td>{document.fileType ?? 'Not listed'}</td></tr>
-        <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)}</td></tr>
-        <tr><th>SHA-256</th><td>{document.sha256 ? <code class="checksum">{document.sha256}</code> : 'Not listed'}</td></tr>
+        <tr><th>File name</th><td>{document.fileName}</td></tr>
+        <tr><th>MIME type</th><td>{document.fileType}</td></tr>
+        <tr><th>Page count</th><td>{document.pageCount}</td></tr>
+        <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)} ({document.fileSizeBytes} bytes)</td></tr>
+        <tr><th>SHA-256</th><td><span class="checksum-block"><code>{document.sha256}</code></span></td></tr>
       </tbody>
     </table>
-    <p><a href="/verify">How to verify SHA-256 checksums →</a></p>
+    <p>
+      A matching SHA-256 checksum verifies that the downloaded bytes match this archive copy. It does not independently prove authorship or authenticity. <a href="/verify/">How to verify checksums →</a>
+    </p>
   </section>
 
   <section class="section metadata-panel">
+    <span class="layer-label">Downloads</span>
     <h2>Downloads</h2>
+    <div class="status-banner" role="note" aria-label="Publisher status before download">
+      <div>
+        <strong>Publisher status</strong>
+        <p>{document.publisherStatus}</p>
+      </div>
+      <div>
+        <strong>Archive status</strong>
+        <p>{document.archiveStatus}</p>
+      </div>
+    </div>
     {hasDownloads(document) ? (
       <div class="actions">
-        {document.primaryDownloadUrl && <a class="button" href={document.primaryDownloadUrl}>Download primary copy</a>}
-        {document.mirrorUrls?.map((url, index) => <a class="button secondary" href={url}>Mirror {index + 1}</a>)}
+        <a class="button" href={document.primaryDownloadUrl}>Download preserved copy</a>
+        {document.mirrorUrls.length > 0 ? document.mirrorUrls.map((url, index) => <a class="button secondary" href={url}>Independent mirror {index + 1}</a>) : <p>No independent mirror URLs are listed for this document. Mirrors may be added if verified.</p>}
       </div>
     ) : (
-      <p>No public download link is available for this document yet.</p>
+      <p>No public download link is listed for this document.</p>
+    )}
+  </section>
+
+  <section class="section layer" aria-labelledby="timeline-heading">
+    <span class="layer-label">Verified events</span>
+    <h2 id="timeline-heading">Event timeline</h2>
+    <ol class="timeline">
+      {collection.verifiedEvents.map((event) => (
+        <li>
+          <time datetime={event.date}>{event.date}</time>
+          <div>
+            <h3>{event.label}</h3>
+            <p>{event.description}</p>
+            {event.sourceUrl && <p><a href={event.sourceUrl}>{event.sourceLabel ?? 'Source'} →</a></p>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section editorial-callout">
+    <span class="layer-label">Archive editorial note</span>
+    <h2>Why the archive preserves it</h2>
+    <p>{document.whyHosted}</p>
+  </section>
+
+  <section class="section layer">
+    <span class="layer-label">External response</span>
+    <h2>Criticism, responses, and additional context</h2>
+    <ul class="source-list">
+      {document.sources.map((source) => (
+        <li>
+          {source.type && <span class="source-type">{source.type}</span>}
+          <a href={source.url}>{source.label}</a>
+          {source.note && <p>{source.note}</p>}
+        </li>
+      ))}
+    </ul>
+    {document.contentWarnings.length > 0 && (
+      <div class="fact-callout">
+        <h3>Content and safety notes</h3>
+        <ul class="kicker-list">
+          {document.contentWarnings.map((warning) => <li>{warning}</li>)}
+        </ul>
+      </div>
     )}
   </section>
 
   <section class="section prose">
-    <h2>Why hosted</h2>
-    <p>{document.whyHosted}</p>
+    <h2>Corrections and takedown link</h2>
+    <p>
+      Send provenance corrections, factual context, privacy concerns, safety concerns, or legal complaints through the <a href="/legal/">legal and correction process</a>.
+    </p>
   </section>
 </BaseLayout>

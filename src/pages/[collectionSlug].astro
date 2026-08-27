@@ -14,12 +14,41 @@ interface Props {
 }
 
 const { collection } = Astro.props;
+const collectionUrl = new URL(`/${collection.slug}/`, Astro.site ?? 'https://streisandeffect.org').toString();
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'CollectionPage',
+  name: collection.title,
+  description: collection.summary,
+  url: collectionUrl,
+  dateModified: collection.lastReviewed,
+  hasPart: collection.documents.map((document) => ({
+    '@type': 'DigitalDocument',
+    name: document.title,
+    encodingFormat: document.fileType,
+    contentSize: String(document.fileSizeBytes),
+    url: new URL(`/${collection.slug}/${document.slug}/`, Astro.site ?? 'https://streisandeffect.org').toString()
+  }))
+};
 ---
 <BaseLayout title={collection.title} description={collection.summary}>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+
   <section class="collection-hero">
     <p class="eyebrow">Collection</p>
     <h1>{collection.title}</h1>
     <p class="lede">{collection.summary}</p>
+    <p class="last-reviewed">Last metadata review: {collection.lastReviewed}</p>
+    <div class="status-banner" role="note" aria-label="Collection status">
+      <div>
+        <strong>Publisher status</strong>
+        <p>{collection.publisherStatus}</p>
+      </div>
+      <div>
+        <strong>Archive status</strong>
+        <p>{collection.archiveStatus}</p>
+      </div>
+    </div>
   </section>
 
   {collection.contentWarning && (
@@ -29,51 +58,100 @@ const { collection } = Astro.props;
     </section>
   )}
 
-  <section class="section prose">
-    <h2>Why this archive exists</h2>
-    <p>{collection.editorialNote}</p>
-    <p>
-      For this collection, the archive documents exact publication details, file hashes, and the surrounding pressure campaign. The point is not neutral distance from anti-trans politics: the archive is pro-trans and exists here because gender-critical censorship pressure should not get to erase reports condemning anti-rights organizing.
-    </p>
+  <section class="section publisher-callout">
+    <span class="layer-label">Publisher statement</span>
+    <h2>Amnesty’s current position</h2>
+    <p>{collection.amnestyPosition}</p>
+    <p><a href="https://www.amnesty.org.uk/briefing-review/">Read Amnesty International UK’s statement →</a></p>
   </section>
 
-  <section class="section">
-    <h2>Documents</h2>
-    {collection.documents.length === 0 ? (
-      <article class="callout">
-        <h3>No documents listed</h3>
-        <p>
-          This collection does not currently list documents. Collections add downloads only after provenance, checksums, storage mirrors, and legal/takedown review are documented.
-        </p>
+  <section class="section layer" aria-labelledby="timeline-heading">
+    <span class="layer-label">Verified events</span>
+    <h2 id="timeline-heading">Timeline</h2>
+    <ol class="timeline">
+      {collection.verifiedEvents.map((event) => (
+        <li>
+          <time datetime={event.date}>{event.date}</time>
+          <div>
+            <h3>{event.label}</h3>
+            <p>{event.description}</p>
+            {event.sourceUrl && <p><a href={event.sourceUrl}>{event.sourceLabel ?? 'Source'} →</a></p>}
+          </div>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="section editorial-callout">
+    <span class="layer-label">Archive editorial note</span>
+    <h2>Why this collection is preserved</h2>
+    <p>{collection.archiveInterpretation}</p>
+  </section>
+
+  <section class="section" aria-labelledby="documents-heading">
+    <h2 id="documents-heading">Documents</h2>
+    <div class="document-list">
+      {collection.documents.map((document) => (
+        <article class="document-card">
+          <header>
+            <div>
+              <h3><a href={`/${collection.slug}/${document.slug}/`}>{document.title}</a></h3>
+              <p>{document.neutralDescription}</p>
+            </div>
+            <span class="status-badge">{document.publisherStatus}</span>
+          </header>
+          <div class="status-grid" aria-label="Document status">
+            <div>
+              <strong>Publisher status</strong>
+              <p>{document.publisherStatus}</p>
+            </div>
+            <div>
+              <strong>Archive status</strong>
+              <p>{documentStatusLabel(document.status)}</p>
+            </div>
+          </div>
+          <dl class="document-meta">
+            <div><dt>Publisher</dt><dd>{document.publisher}</dd></div>
+            <div><dt>Publication date</dt><dd>{document.bestKnownPublicationDate ?? document.publicationDate}</dd></div>
+            <div><dt>File size</dt><dd>{formatBytes(document.fileSizeBytes)}</dd></div>
+            <div class="wide"><dt>SHA-256</dt><dd><code>{document.sha256}</code></dd></div>
+          </dl>
+          <p class="document-action"><a href={`/${collection.slug}/${document.slug}/`}>View provenance and downloads →</a></p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section layer" aria-labelledby="sources-heading">
+    <span class="layer-label">Sources and context</span>
+    <h2 id="sources-heading">Source links</h2>
+    <ul class="source-list">
+      {collection.sources.map((source) => (
+        <li>
+          {source.type && <span class="source-type">{source.type}</span>}
+          <a href={source.url}>{source.label}</a>
+          {source.note && <p>{source.note}</p>}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section layer">
+    <span class="layer-label">External response</span>
+    <h2>Criticism and responses</h2>
+    {collection.criticsStatements.map((statement) => (
+      <article>
+        <h3>{statement.label}</h3>
+        <p>{statement.description}</p>
+        {statement.sourceUrl && <p><a href={statement.sourceUrl}>{statement.sourceLabel ?? 'Source'} →</a></p>}
       </article>
-    ) : (
-      <div class="document-list">
-        {collection.documents.map((document) => (
-          <article class="document-card">
-            <header>
-              <div>
-                <h3><a href={`/${collection.slug}/${document.slug}`}>{document.title}</a></h3>
-                <p>{document.summary}</p>
-              </div>
-              <span class="status-badge">{documentStatusLabel(document.status)}</span>
-            </header>
-            <dl class="document-meta">
-              <div><dt>Publisher</dt><dd>{document.publisher}</dd></div>
-              <div><dt>Publication date</dt><dd>{document.publicationDate ?? 'Unknown'}</dd></div>
-              <div><dt>File size</dt><dd>{formatBytes(document.fileSizeBytes)}</dd></div>
-              <div class="wide"><dt>SHA-256</dt><dd>{document.sha256 ? <code>{document.sha256}</code> : 'Not listed'}</dd></div>
-            </dl>
-            <p class="document-action"><a href={`/${collection.slug}/${document.slug}`}>View provenance and downloads →</a></p>
-          </article>
-        ))}
-      </div>
-    )}
+    ))}
   </section>
 
   <section class="section prose">
-    <h2>Takedown, correction, or context requests</h2>
+    <h2>Corrections and takedown requests</h2>
     <p>
-      If you believe this collection contains incorrect provenance, missing context, or material that should not be hosted, use the process described on the <a href="/legal">legal page</a>. The archive may publish request metadata on the <a href="/transparency">transparency page</a> when safe and lawful.
+      If this collection contains incorrect provenance, missing context, or material that should not be hosted, use the process described on the <a href="/legal/">legal and correction page</a>.
     </p>
   </section>
 </BaseLayout>

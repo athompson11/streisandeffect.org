@@ -10,7 +10,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <section class="section grid">
+  <section class="section grid" aria-labelledby="checksum-command-heading">
+    <h2 id="checksum-command-heading" class="screen-reader-only">Checksum commands</h2>
     <article class="card">
       <h3>Linux</h3>
       <p><code>sha256sum file.pdf</code></p>

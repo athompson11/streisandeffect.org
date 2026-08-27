@@ -1,4 +1,30 @@
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import YAML from 'yaml';
+
 export type DocumentStatus = 'available' | 'needs-metadata' | 'disputed' | 'temporarily-disabled';
+
+export interface SourceLink {
+  label: string;
+  url: string;
+  type?: string;
+  note?: string;
+}
+
+export interface TimelineEvent {
+  date: string;
+  label: string;
+  description: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+}
+
+export interface ExternalResponse {
+  label: string;
+  description: string;
+  sourceLabel?: string;
+  sourceUrl?: string;
+}
 
 export interface ArchiveDocument {
   slug: string;
@@ -6,18 +32,31 @@ export interface ArchiveDocument {
   status: DocumentStatus;
   publisher: string;
   publicationDate?: string;
-  originalUrl?: string;
-  archivedOriginalUrl?: string;
+  bestKnownPublicationDate?: string;
+  publisherStatus: string;
+  archiveStatus: string;
+  removalStatus: string;
   removalDiscoveredDate?: string;
+  archiveObtainedDate: string;
+  copyObtainedHow: string;
+  originalUrl?: string;
+  originalUrlNote?: string;
+  archivedOriginalUrl?: string;
+  archivedOriginalUrlNote?: string;
   summary: string;
+  neutralDescription: string;
+  publisherCurrentPosition: string;
   whyHosted: string;
-  fileName?: string;
-  fileType?: string;
-  fileSizeBytes?: number;
-  sha256?: string;
-  primaryDownloadUrl?: string;
-  mirrorUrls?: string[];
-  warnings: string[];
+  fileName: string;
+  fileType: string;
+  pageCount: number;
+  fileSizeBytes: number;
+  sha256: string;
+  primaryDownloadUrl: string;
+  mirrorUrls: string[];
+  contentWarnings: string[];
+  lastReviewed: string;
+  sources: SourceLink[];
 }
 
 export interface ArchiveCollection {
@@ -31,72 +70,50 @@ export interface ArchiveCollection {
   editorialNote: string;
   topics: string[];
   archiveStarted: string;
+  lastReviewed: string;
+  publisherStatus: string;
+  archiveStatus: string;
+  sources: SourceLink[];
+  verifiedEvents: TimelineEvent[];
+  amnestyPosition: string;
+  criticsStatements: ExternalResponse[];
+  archiveInterpretation: string;
   documents: ArchiveDocument[];
-  contextLinks: Array<{
-    label: string;
-    url: string;
-    note?: string;
-  }>;
 }
 
-export const archiveCollections: ArchiveCollection[] = [
-  {
-    slug: 'amnestyinternational',
-    title: 'Amnesty International UK Anti-Rights Movement Reports Archive',
-    shortTitle: 'Amnesty International UK',
-    publisher: 'Amnesty International UK',
-    status: 'active',
-    summary:
-      'A pro-trans public-interest archive for Amnesty International UK briefings on anti-rights and gender-critical movements in the UK, preserved because pressure from the gender-critical crowd should not be allowed to censor accountability documents.',
-    contentWarning:
-      'This collection discusses anti-trans organizing, gender-critical political advocacy, and threats to the rights of women and LGBT+ people. The archive is explicitly pro-trans and preserves these documents so attempts to suppress criticism of anti-trans politics do not erase the public record.',
-    editorialNote:
-      'These reports are preserved for accountability, criticism, historical record, and research after becoming candidates for preservation because of public controversy and pressure from gender-critical actors, including reported legal threats. The archive stands with trans people and against censorship campaigns that try to make pro-trans accountability documents disappear.',
-    topics: ['trans rights', 'pro-trans accountability', 'anti-rights movements', 'gender-critical pressure', 'public accountability'],
-    archiveStarted: '2026-08-26',
-    documents: [
-      {
-        slug: 'a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026',
-        title: 'A growing threat: the anti-rights movement in the UK',
-        status: 'available',
-        publisher: 'Amnesty International UK',
-        publicationDate: 'July 2026',
-        summary:
-          'A 22-page Amnesty International UK briefing describing the UK anti-rights ecosystem, including anti-rights organizations, funding patterns, and links between gender-critical actors and broader attacks on the rights of women and LGBT+ people.',
-        whyHosted:
-          'Preserved because this report is part of the public record around UK anti-rights organizing and because pressure from the gender-critical crowd, including reported legal threats, should not be allowed to censor documents that condemn anti-trans politics. The archive hosts it from a pro-trans position for public-interest research, accountability, and criticism.',
-        fileName: 'a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf',
-        fileType: 'application/pdf',
-        fileSizeBytes: 353758,
-        sha256: 'd11534aa4fccdf0e19a4390b94586ec8ec23fbbac842acf03961bdbdf97cf387',
-        primaryDownloadUrl:
-          '/documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf',
-        mirrorUrls: [],
-        warnings: ['anti-trans organizing', 'anti-rights movement analysis', 'reported legal-pressure context']
-      },
-      {
-        slug: 'like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026',
-        title: 'Like a snowball: the growth and impact of the gender critical movement in the UK',
-        status: 'available',
-        publisher: 'Amnesty International UK',
-        publicationDate: 'May 2026',
-        summary:
-          'A 25-page Amnesty International UK briefing examining gender-critical actors in the UK, media coverage of trans people, and the movement’s relationship to wider anti-rights advocacy.',
-        whyHosted:
-          'Preserved because it documents a politically significant anti-trans movement affecting the rights and public treatment of trans people in the UK. The archive hosts it from a pro-trans position for public-interest research, accountability, and criticism, and to resist pressure campaigns that try to make criticism of gender-critical politics harder to find.',
-        fileName: 'like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf',
-        fileType: 'application/pdf',
-        fileSizeBytes: 411751,
-        sha256: 'f77a5315df3fa0204045d1d7ae2483ab57c075ea95674e96595edf3526144e5f',
-        primaryDownloadUrl:
-          '/documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf',
-        mirrorUrls: [],
-        warnings: ['anti-trans organizing', 'gender-critical movement analysis']
-      }
-    ],
-    contextLinks: []
-  }
-];
+function toCamel(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(toCamel);
+  if (!value || typeof value !== 'object') return value;
+
+  return Object.fromEntries(
+    Object.entries(value).map(([key, nested]) => [key.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase()), toCamel(nested)])
+  );
+}
+
+function normalizeDocument(document: unknown): ArchiveDocument {
+  const parsed = document as Partial<ArchiveDocument>;
+  return {
+    ...parsed,
+    status: parsed.status ?? 'available',
+    mirrorUrls: parsed.mirrorUrls ?? [],
+    contentWarnings: parsed.contentWarnings ?? [],
+    sources: parsed.sources ?? []
+  } as ArchiveDocument;
+}
+
+function loadCollections(): ArchiveCollection[] {
+  const archivePath = join(process.cwd(), 'content', 'collections', 'amnestyinternational', 'archive.yaml');
+  const raw = YAML.parse(readFileSync(archivePath, 'utf8')) as Record<string, unknown>;
+  const collection = toCamel(raw) as ArchiveCollection;
+  collection.documents = (collection.documents ?? []).map((document) => normalizeDocument(document));
+  collection.sources = collection.sources ?? [];
+  collection.verifiedEvents = collection.verifiedEvents ?? [];
+  collection.criticsStatements = collection.criticsStatements ?? [];
+  collection.topics = collection.topics ?? [];
+  return [collection];
+}
+
+export const archiveCollections: ArchiveCollection[] = loadCollections();
 
 export function getCollections(): ArchiveCollection[] {
   return archiveCollections;
@@ -127,7 +144,7 @@ export function hasDownloads(document: ArchiveDocument): boolean {
 export function documentStatusLabel(status: DocumentStatus): string {
   switch (status) {
     case 'available':
-      return 'Available';
+      return 'Preserved copy available';
     case 'needs-metadata':
       return 'Needs metadata';
     case 'disputed':

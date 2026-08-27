@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">streisandeffect.org</title>
+  <desc id="desc">Independent public-interest archive for records that should not vanish quietly.</desc>
+  <rect width="1200" height="630" fill="#f6f2e9"/>
+  <rect x="80" y="80" width="1040" height="470" fill="#fffdf8" stroke="#d8cfc2" stroke-width="3" rx="22"/>
+  <circle cx="142" cy="142" r="28" fill="#f3d7d2" stroke="#191715" stroke-width="4"/>
+  <text x="142" y="151" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#191715">SE</text>
+  <text x="190" y="151" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#191715">streisandeffect.org</text>
+  <text x="110" y="275" font-family="system-ui, sans-serif" font-size="66" font-weight="850" fill="#191715">Records should not</text>
+  <text x="110" y="352" font-family="system-ui, sans-serif" font-size="66" font-weight="850" fill="#191715">vanish quietly.</text>
+  <text x="110" y="430" font-family="system-ui, sans-serif" font-size="28" fill="#5d5750">Independent pro-trans public-interest archive.</text>
+</svg>

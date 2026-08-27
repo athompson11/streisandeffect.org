@@ -1,40 +1,68 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-<BaseLayout title="About" description="Editorial principles and operating model for streisandeffect.org.">
+<BaseLayout title="About" description="Editorial position, operating model, and inclusion criteria for streisandeffect.org.">
   <section class="prose">
     <p class="eyebrow">About the archive</p>
-    <h1>Preservation for scrutiny, not sanitization.</h1>
+    <h1>Independent preservation with a clear point of view.</h1>
     <p class="lede">
-      streisandeffect.org exists to preserve records that are at risk of disappearing from public view. The goal is to make controversial or inconvenient documents easier to examine with context, provenance, and verification data.
+      streisandeffect.org is an independently operated personal archive. It is not affiliated with Amnesty International UK or any original publisher.
     </p>
   </section>
 
-  <section class="section grid">
+  <section class="section prose">
+    <h2>Editorial position</h2>
+    <p>
+      The archive operator is pro-trans and opposed to anti-trans political organizing. The archive does not pretend to be ideologically neutral, but factual claims, provenance claims, publisher statements, external criticism, and archive analysis are kept visibly separate.
+    </p>
+    <p>
+      Documents are selected by the human operator. Hosting a document preserves a record for scrutiny; it does not automatically endorse every claim, framing, or conclusion inside that document.
+    </p>
+  </section>
+
+  <section class="section grid" aria-labelledby="criteria-heading">
+    <h2 id="criteria-heading" class="screen-reader-only">Inclusion criteria</h2>
     <article class="card">
-      <h3>Public-interest threshold</h3>
-      <p>We prioritize documents from institutions, public campaigns, advocacy organizations, governments, and other actors whose published materials affect public debate or policy.</p>
+      <h3>Public-interest value</h3>
+      <p>The document helps accountability, research, criticism, or historical memory.</p>
     </article>
     <article class="card">
-      <h3>Factual provenance</h3>
-      <p>Collection pages should state what is known: who published the material, where it appeared, when it disappeared or changed, and what evidence supports that history.</p>
+      <h3>Institutional significance</h3>
+      <p>The publisher, subject, removal, or dispute has institutional or political significance.</p>
     </article>
     <article class="card">
-      <h3>Editorial separation</h3>
-      <p>Pages should clearly separate original-document description, archive rationale, criticism, and opinion. When claims are contested, say so plainly.</p>
+      <h3>Verifiable provenance</h3>
+      <p>The archive can identify the source, copy history, file metadata, and remaining uncertainty.</p>
+    </article>
+    <article class="card">
+      <h3>Documented removal or change</h3>
+      <p>The record has been withdrawn, removed, materially changed, or made difficult to access.</p>
+    </article>
+    <article class="card">
+      <h3>Adequate context</h3>
+      <p>The page can explain the document without collapsing fact, criticism, and archive opinion together.</p>
+    </article>
+    <article class="card">
+      <h3>Acceptable risk</h3>
+      <p>Privacy, safety, legal, and provider-policy risks are weighed before publication.</p>
     </article>
   </section>
 
   <section class="section prose">
-    <h2>Hosting does not imply endorsement of hostile material</h2>
+    <h2>Exclusions</h2>
+    <ul class="kicker-list">
+      <li>Private personal information or doxxing.</li>
+      <li>Unlawfully obtained private material.</li>
+      <li>Malware, exploit payloads, or active tracking files.</li>
+      <li>Material whose publication would create a serious safety risk.</li>
+      <li>Documents that cannot be authenticated sufficiently for public presentation.</li>
+    </ul>
+  </section>
+
+  <section class="section prose">
+    <h2>Corrections</h2>
     <p>
-      The archive is pro-trans. It is not neutral about anti-trans politics or censorship pressure from gender-critical campaigns. When documents are preserved because they condemn anti-rights organizing, the archive should say that clearly.
-    </p>
-    <p>
-      Some future preserved documents may include harmful framing, bigotry, misinformation, or contested claims. Hosting those materials, when it happens, preserves a record for scrutiny, research, and accountability rather than endorsing the hostile claims inside them.
-    </p>
-    <p>
-      Collection pages should include content warnings and relevant rebuttals or subject-matter context when available.
+      Corrections are welcomed. Metadata changes, material contextual changes, and file replacements are dated and recorded when safe. Files are not silently replaced; replacement files receive new hashes and version information.
     </p>
   </section>
 </BaseLayout>

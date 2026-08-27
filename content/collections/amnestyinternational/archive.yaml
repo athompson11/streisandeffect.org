@@ -1,22 +1,195 @@
 slug: amnestyinternational
-title: Amnesty International UK Anti-Rights Movement Reports Archive
+title: Amnesty International UK Withdrawn Reports Archive
+short_title: Withdrawn Amnesty UK reports
 publisher: Amnesty International UK
 status: active
 summary: >-
-  A pro-trans public-interest archive for Amnesty International UK briefings on
-  anti-rights and gender-critical movements in the UK, preserved because pressure
-  from the gender-critical crowd should not be allowed to censor accountability
-  documents.
+  Amnesty International UK published these briefings in May and July 2026 and later withdrew both.
+  Amnesty states that the July briefing bypassed internal review and fell short of its research and
+  editorial standards; it also apologized to organizations collectively labelled “anti-rights.” This
+  archive preserves the withdrawn documents for research, criticism, and historical record. The archive's
+  editorial position is pro-trans, but the original documents, Amnesty’s current position, external criticism,
+  and archive analysis are presented separately.
+content_warning: >-
+  This collection discusses anti-trans organizing, gender-critical political advocacy, and contested claims
+  about organizations and campaigners. Some archived material may include claims that subjects dispute.
+editorial_note: >-
+  The archive operator is pro-trans and opposed to anti-trans political organizing. These withdrawn reports
+  are preserved because Amnesty's publication, withdrawal, apology, and the surrounding public response are
+  historically and politically significant. Factual chronology, publisher statements, external responses, and
+  archive interpretation are separated below.
+archive_started: 2026-08-26
+last_reviewed: 2026-08-26
 topics:
   - trans rights
-  - pro-trans accountability
   - anti-rights movements
-  - gender-critical pressure
   - public accountability
-archive_started: 2026-08-26
-content_warning: >-
-  This collection discusses anti-trans organizing, gender-critical political
-  advocacy, and threats to the rights of women and LGBT+ people.
-editorial_note: >-
-  The archive is explicitly pro-trans and preserves these documents so attempts
-  to suppress criticism of anti-trans politics do not erase the public record.
+publisher_status: Withdrawn by Amnesty International UK
+archive_status: Preserved copies available
+sources:
+  - label: Amnesty International UK apology and briefing review
+    url: https://www.amnesty.org.uk/briefing-review/
+    type: publisher statement
+    note: >-
+      Amnesty apologizes for publishing “A growing threat,” says it should never have been published,
+      says the anti-rights labelling does not represent its institutional position, and says it also took
+      down the earlier “Like A Snowball” briefing.
+  - label: Archived copy of “A growing threat” hosted by this archive
+    url: /documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf
+    type: archive copy
+  - label: Archived copy of “Like a snowball” hosted by this archive
+    url: /documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf
+    type: archive copy
+verified_events:
+  - date: 2026-05
+    label: “Like a snowball” published
+    description: >-
+      The briefing itself is dated May 2026.
+    source_label: Archived copy of “Like a snowball” hosted by this archive
+    source_url: /documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf
+  - date: 2026-07-08
+    label: “A growing threat” published
+    description: >-
+      Amnesty's later apology identifies “A growing threat” as a briefing published on 8 July 2026.
+    source_label: Amnesty International UK apology and briefing review
+    source_url: https://www.amnesty.org.uk/briefing-review/
+  - date: 2026-07
+    label: July report removed soon after publication
+    description: >-
+      The report was reported as removed within 48 hours of publication. The archive treats the exact timing
+      as approximate unless a dated capture or primary source is linked.
+  - date: 2026-07
+    label: Complaints, threatened litigation, and political responses followed publication
+    description: >-
+      Amnesty's public statement acknowledges concerns raised by organizations labelled “anti-rights.” Threatened
+      litigation and political responses were also reported after publication, but the archive does not treat those
+      reports as establishing the sole cause of withdrawal. A direct source link for threatened-litigation reporting
+      has not yet been verified for this entry.
+    source_label: Amnesty International UK apology and briefing review
+    source_url: https://www.amnesty.org.uk/briefing-review/
+  - date: 2026-07-31
+    label: Amnesty apologizes and confirms both reports were withdrawn
+    description: >-
+      Amnesty apologizes for “A growing threat,” says it bypassed internal review and fell short of research and
+      editorial standards, and says it also took down “Like A Snowball.”
+    source_label: Amnesty International UK apology and briefing review
+    source_url: https://www.amnesty.org.uk/briefing-review/
+  - date: 2026-08-26
+    label: Archive copies obtained and added
+    description: >-
+      The archive obtained copies from the operator's local files and added them with checksums and file metadata.
+amnesty_position: >-
+  Amnesty International UK withdrew the reports after public complaints and reported threatened legal action. Amnesty
+  states that the July report bypassed its internal review process and fell short of its research and editorial
+  standards. Amnesty apologized for collectively labelling organizations as anti-rights and specifically referenced
+  Beira’s Place and other groups categorized as gender-critical organizations. The archive does not claim that legal
+  pressure was the sole or established cause of withdrawal.
+critics_statements:
+  - label: Organizations labelled “anti-rights” raised concerns
+    description: >-
+      Amnesty states that it recognizes concerns raised by organizations labelled “anti-rights” in the July report.
+    source_label: Amnesty International UK apology and briefing review
+    source_url: https://www.amnesty.org.uk/briefing-review/
+  - label: Additional reporting and rebuttals
+    description: >-
+      No additional independently verified reporting, criticism, or rebuttal links have been added yet. The archive
+      will add them when direct source URLs are verified.
+archive_interpretation: >-
+  The publication and withdrawal are significant because the reports concern organized opposition to trans rights,
+  media treatment of trans people, and broader anti-rights politics in the UK. Preserving the withdrawn PDFs allows
+  readers to examine the original text alongside Amnesty's withdrawal statement, criticism, and verification data.
+documents:
+  - slug: a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026
+    title: 'A growing threat: the anti-rights movement in the UK'
+    publisher: Amnesty International UK
+    publication_date: 2026-07-08
+    best_known_publication_date: 2026-07-08
+    publisher_status: Withdrawn by Amnesty International UK
+    archive_status: Preserved copy available
+    removal_status: Withdrawn by publisher; no longer published by Amnesty International UK
+    removal_discovered_date: 2026-07
+    archive_obtained_date: 2026-08-26
+    copy_obtained_how: Copy supplied from the archive operator's local files.
+    original_url: null
+    original_url_note: Exact original publisher PDF URL has not been identified.
+    archived_original_url: null
+    archived_original_url_note: No verified Internet Archive capture has been linked for the original publisher URL.
+    summary: >-
+      A 22-page Amnesty International UK briefing describing the UK anti-rights ecosystem, including anti-rights
+      organizations, funding patterns, and links between gender-critical actors and broader attacks on the rights of
+      women and LGBT+ people.
+    neutral_description: >-
+      Amnesty International UK published this July 2026 briefing and later withdrew it. The archived PDF is preserved
+      here with file metadata, checksum, and Amnesty's current statement linked separately.
+    publisher_current_position: >-
+      Amnesty International UK apologized for publishing this briefing, says it should never have been published,
+      says it bypassed internal review and fell short of Amnesty's research and editorial standards, and says the
+      collective “anti-rights” labelling does not represent its institutional position.
+    why_hosted: >-
+      This archive preserves the withdrawn briefing for research, criticism, and historical record. The archive's
+      editorial position is pro-trans, but readers should evaluate the original text alongside Amnesty's withdrawal
+      statement and external criticism.
+    file_name: a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf
+    file_type: application/pdf
+    page_count: 22
+    file_size_bytes: 353758
+    sha256: d11534aa4fccdf0e19a4390b94586ec8ec23fbbac842acf03961bdbdf97cf387
+    primary_download_url: /documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf
+    mirror_urls: []
+    content_warnings:
+      - Discusses anti-trans organizing and anti-rights advocacy.
+      - Includes claims about named organizations and campaigners that Amnesty later apologized for collectively labelling.
+    last_reviewed: 2026-08-26
+    sources:
+      - label: Amnesty International UK apology and briefing review
+        url: https://www.amnesty.org.uk/briefing-review/
+        type: publisher statement
+      - label: Archive download for this PDF
+        url: /documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf
+        type: archive copy
+  - slug: like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026
+    title: 'Like a snowball: the growth and impact of the gender critical movement in the UK'
+    publisher: Amnesty International UK
+    publication_date: 2026-05
+    best_known_publication_date: 2026-05
+    publisher_status: Withdrawn by Amnesty International UK
+    archive_status: Preserved copy available
+    removal_status: Withdrawn by publisher; no longer published by Amnesty International UK
+    removal_discovered_date: 2026-07
+    archive_obtained_date: 2026-08-26
+    copy_obtained_how: Copy supplied from the archive operator's local files.
+    original_url: null
+    original_url_note: Exact original publisher PDF URL has not been identified.
+    archived_original_url: null
+    archived_original_url_note: No verified Internet Archive capture has been linked for the original publisher URL.
+    summary: >-
+      A 25-page Amnesty International UK briefing examining gender-critical actors in the UK, media coverage of trans
+      people, and the movement's relationship to wider anti-rights advocacy.
+    neutral_description: >-
+      Amnesty International UK published this May 2026 briefing and later removed it. The archived PDF is preserved
+      here with file metadata, checksum, and Amnesty's current statement linked separately.
+    publisher_current_position: >-
+      Amnesty International UK says it took down this earlier, more discursive briefing, which referenced a wide range
+      of organizations, alongside its apology for the July report.
+    why_hosted: >-
+      This archive preserves the withdrawn briefing for research, criticism, and historical record because it documents
+      a politically significant debate about gender-critical campaigning, media treatment of trans people, and anti-rights
+      politics in the UK.
+    file_name: like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf
+    file_type: application/pdf
+    page_count: 25
+    file_size_bytes: 411751
+    sha256: f77a5315df3fa0204045d1d7ae2483ab57c075ea95674e96595edf3526144e5f
+    primary_download_url: /documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf
+    mirror_urls: []
+    content_warnings:
+      - Discusses anti-trans organizing and gender-critical advocacy.
+      - Includes claims about organizations and campaigners that may be disputed.
+    last_reviewed: 2026-08-26
+    sources:
+      - label: Amnesty International UK apology and briefing review
+        url: https://www.amnesty.org.uk/briefing-review/
+        type: publisher statement
+      - label: Archive download for this PDF
+        url: /documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf
+        type: archive copy

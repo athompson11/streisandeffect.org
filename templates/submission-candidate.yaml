@@ -7,8 +7,8 @@ original_url: null
 archived_original_url: null
 candidate_reason: >-
   Why this might be worth archiving.
-removal_or_suppression_context: >-
-  What suggests the document was deleted, hidden, altered, or made difficult to access.
+removal_or_change_context: >-
+  What suggests the document was withdrawn, removed, materially changed, or made difficult to access.
 public_interest_rationale: >-
   Why preservation would support accountability, research, criticism, or historical memory.
 source_copy_status: unknown

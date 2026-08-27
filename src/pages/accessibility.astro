@@ -1,0 +1,41 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Accessibility" description="Accessibility statement for streisandeffect.org.">
+  <section class="prose">
+    <p class="eyebrow">Accessibility</p>
+    <h1>Accessibility statement</h1>
+    <p class="lede">
+      The archive aims to keep public pages readable, keyboard-accessible, and usable with assistive technology.
+    </p>
+    <p class="last-reviewed">Last updated: 2026-08-26</p>
+  </section>
+
+  <section class="section prose">
+    <h2>Current approach</h2>
+    <ul class="kicker-list">
+      <li>Pages use semantic landmarks and a skip link.</li>
+      <li>Navigation and links are keyboard-accessible with visible focus indicators.</li>
+      <li>Body links are underlined and not identified by color alone.</li>
+      <li>Long URLs, filenames, and checksums are allowed to wrap.</li>
+      <li>The layout is designed to work at narrow viewport widths and high zoom.</li>
+    </ul>
+  </section>
+
+  <section class="section prose">
+    <h2>PDFs</h2>
+    <p>
+      The archived PDFs report as tagged in local metadata inspection, but that does not guarantee complete PDF accessibility. If a PDF is inaccessible to you, please report the issue and identify the affected document.
+    </p>
+  </section>
+
+  <section class="section prose">
+    <h2>Report an accessibility problem</h2>
+    <p>
+      Email: <a href="mailto:accessibility@streisandeffect.org">accessibility@streisandeffect.org</a>
+    </p>
+    <p>
+      Include the URL, the problem encountered, the browser or assistive technology used if relevant, and the format you need.
+    </p>
+  </section>
+</BaseLayout>
