@@ -1,0 +1,38 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Transparency" description="Takedown and provider-pressure transparency log for streisandeffect.org.">
+  <section class="prose">
+    <p class="eyebrow">Transparency</p>
+    <h1>Requests and provider pressure</h1>
+    <p class="lede">
+      The archive should document takedown attempts, correction requests, provider abuse complaints, and service disruptions when publishing that information is safe and lawful.
+    </p>
+  </section>
+
+  <section class="section metadata-panel">
+    <h2>Current log</h2>
+    <p>No takedown, correction, or provider-pressure incidents have been recorded yet.</p>
+  </section>
+
+  <section class="section prose">
+    <h2>Future incident fields</h2>
+    <ul class="kicker-list">
+      <li>Date received.</li>
+      <li>Requester category: publisher, provider, legal representative, individual, automated notice, or unknown.</li>
+      <li>Collection/document affected.</li>
+      <li>Request type: DMCA, trademark, defamation, privacy, safety, factual correction, abuse report, or provider policy.</li>
+      <li>Action requested.</li>
+      <li>Archive response.</li>
+      <li>Current status.</li>
+      <li>Whether documents or downloads were temporarily disabled.</li>
+    </ul>
+  </section>
+
+  <section class="section prose">
+    <h2>Provider resilience note</h2>
+    <p>
+      Cloudflare can provide CDN, WAF, and DDoS protection. The archive should still keep static builds, metadata, checksums, and document mirrors outside any single provider so a false DMCA or abuse complaint cannot remove every copy at once.
+    </p>
+  </section>
+</BaseLayout>

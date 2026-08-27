@@ -1,0 +1,84 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { documentStatusLabel, formatBytes, getCollections, type ArchiveCollection } from '../data/archive';
+
+export function getStaticPaths() {
+  return getCollections().map((collection) => ({
+    params: { collectionSlug: collection.slug },
+    props: { collection }
+  }));
+}
+
+interface Props {
+  collection: ArchiveCollection;
+}
+
+const { collection } = Astro.props;
+---
+<BaseLayout title={collection.title} description={collection.summary}>
+  <section class="prose">
+    <p class="eyebrow">Collection</p>
+    <h1>{collection.title}</h1>
+    <p class="lede">{collection.summary}</p>
+    <div class="badge-row">
+      {collection.topics.map((topic) => <span class="badge">{topic}</span>)}
+    </div>
+  </section>
+
+  {collection.contentWarning && (
+    <section class="section callout warning" aria-label="Content warning">
+      <h2>Content warning</h2>
+      <p>{collection.contentWarning}</p>
+    </section>
+  )}
+
+  <section class="section prose">
+    <h2>Why this archive exists</h2>
+    <p>{collection.editorialNote}</p>
+    <p>
+      For this collection, the archive should document exact original publication details before files are made available: titles, URLs, publication dates, removal evidence, file hashes, and relevant criticism or rebuttals.
+    </p>
+  </section>
+
+  <section class="section">
+    <h2>Documents</h2>
+    {collection.documents.length === 0 ? (
+      <article class="callout">
+        <h3>No public downloads yet</h3>
+        <p>
+          The collection page is live as a scaffold, but specific document metadata and downloads have not been published. Add real documents only after provenance, checksums, storage mirrors, and legal/takedown process are ready.
+        </p>
+      </article>
+    ) : (
+      <div class="document-list">
+        {collection.documents.map((document) => (
+          <article class="document-card">
+            <header>
+              <div>
+                <h3><a href={`/${collection.slug}/${document.slug}`}>{document.title}</a></h3>
+                <p>{document.summary}</p>
+              </div>
+              <span class="badge">{documentStatusLabel(document.status)}</span>
+            </header>
+            <table class="meta-table">
+              <tbody>
+                <tr><th>Publisher</th><td>{document.publisher}</td></tr>
+                <tr><th>Publication date</th><td>{document.publicationDate ?? 'Unknown'}</td></tr>
+                <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)}</td></tr>
+                <tr><th>SHA-256</th><td>{document.sha256 ? <code class="checksum">{document.sha256}</code> : 'Pending'}</td></tr>
+              </tbody>
+            </table>
+            <p><a href={`/${collection.slug}/${document.slug}`}>View provenance and downloads →</a></p>
+          </article>
+        ))}
+      </div>
+    )}
+  </section>
+
+  <section class="section prose">
+    <h2>Takedown, correction, or context requests</h2>
+    <p>
+      If you believe this collection contains incorrect provenance, missing context, or material that should not be hosted, use the process described on the <a href="/legal">legal page</a>. The archive may publish request metadata on the <a href="/transparency">transparency page</a> when safe and lawful.
+    </p>
+  </section>
+</BaseLayout>

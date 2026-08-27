@@ -1,0 +1,22 @@
+{
+  "name": "streisandeffect.org",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Public-interest archive site for preserved deleted or suppressed documents.",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro check && astro build && npm run validate:content",
+    "check": "astro check && npm run validate:content",
+    "preview": "astro preview",
+    "validate:content": "node scripts/validate-content.mjs",
+    "ingest:document": "node scripts/ingest-document.mjs"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.5",
+    "astro": "^7.2.8",
+    "typescript": "^5.9.2",
+    "yaml": "^2.8.1"
+  },
+  "devDependencies": {}
+}

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollections } from '../data/archive';
+
+const collections = getCollections();
+---
+<BaseLayout
+  title="A public-interest archive for records that someone tried to disappear"
+  description="streisandeffect.org preserves and contextualizes deleted, suppressed, or hard-to-find documents."
+>
+  <section class="hero">
+    <p class="eyebrow">Public-interest preservation</p>
+    <h1>Records should not vanish quietly.</h1>
+    <p class="lede">
+      streisandeffect.org hosts explanatory archive pages for deleted, suppressed, or hard-to-find documents. Each collection explains what the documents are, why they are preserved, and how to verify or download them.
+    </p>
+    <div class="actions">
+      <a class="button" href="/collections">Browse collections</a>
+      <a class="button secondary" href="/about">Read the editorial principles</a>
+    </div>
+  </section>
+
+  <section class="section grid" aria-label="Archive principles">
+    <article class="card">
+      <h3>Context before downloads</h3>
+      <p>Every collection should explain original publication details, deletion/removal context, public-interest value, and relevant criticism.</p>
+    </article>
+    <article class="card">
+      <h3>Preservation is not endorsement</h3>
+      <p>Archived material can be objectionable, false, or harmful. Hosting it preserves a record for scrutiny, research, and accountability.</p>
+    </article>
+    <article class="card">
+      <h3>Verifiable files</h3>
+      <p>Downloads should include provenance, file size, SHA-256 checksums, and mirrors where possible so readers can confirm integrity.</p>
+    </article>
+    <article class="card">
+      <h3>Resilient by design</h3>
+      <p>Cloudflare can absorb traffic attacks at the edge, while static builds and mirrored storage keep the archive portable if a provider fails.</p>
+    </article>
+  </section>
+
+  <section class="section">
+    <h2>Collections</h2>
+    <div class="document-list">
+      {collections.map((collection) => (
+        <article class="document-card">
+          <header>
+            <div>
+              <h3><a href={`/${collection.slug}`}>{collection.title}</a></h3>
+              <p>{collection.summary}</p>
+            </div>
+            <span class="badge">{collection.documents.length} documents</span>
+          </header>
+          <div class="badge-row">
+            {collection.topics.map((topic) => <span class="badge">{topic}</span>)}
+          </div>
+          <a href={`/${collection.slug}`}>Open collection →</a>
+        </article>
+      ))}
+    </div>
+  </section>
+</BaseLayout>

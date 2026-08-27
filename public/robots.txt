@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://streisandeffect.org/sitemap-index.xml

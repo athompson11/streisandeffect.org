@@ -1,0 +1,44 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Verify downloads" description="How to verify document downloads from streisandeffect.org using SHA-256 checksums.">
+  <section class="prose">
+    <p class="eyebrow">File integrity</p>
+    <h1>Verify downloads</h1>
+    <p class="lede">
+      Each hosted file should publish a SHA-256 checksum. After downloading a file, compute its checksum locally and compare it to the value shown on the document page.
+    </p>
+  </section>
+
+  <section class="section grid">
+    <article class="card">
+      <h3>Linux</h3>
+      <p><code>sha256sum file.pdf</code></p>
+    </article>
+    <article class="card">
+      <h3>macOS</h3>
+      <p><code>shasum -a 256 file.pdf</code></p>
+    </article>
+    <article class="card">
+      <h3>Windows PowerShell</h3>
+      <p><code>Get-FileHash .\file.pdf -Algorithm SHA256</code></p>
+    </article>
+  </section>
+
+  <section class="section prose">
+    <h2>What a match means</h2>
+    <p>
+      If your computed SHA-256 value exactly matches the checksum on the document page, your downloaded bytes match the archived copy described by that page.
+    </p>
+    <p>
+      A checksum match does not prove that the original publisher authored the file. Provenance should be evaluated using original URLs, archived captures, publication context, signatures, and external references.
+    </p>
+  </section>
+
+  <section class="section prose">
+    <h2>What a mismatch means</h2>
+    <p>
+      If the values differ, do not rely on the file. Try another mirror, clear partial downloads, and report the mismatch through the legal/correction process.
+    </p>
+  </section>
+</BaseLayout>

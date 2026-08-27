@@ -1,0 +1,56 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'streisandeffect.org',
+  description = 'A public-interest archive for deleted, suppressed, or hard-to-find documents.'
+} = Astro.props;
+
+const pageTitle = title === 'streisandeffect.org' ? title : `${title} | streisandeffect.org`;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{pageTitle}</title>
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+    <header class="site-header">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="brand" href="/" aria-label="streisandeffect.org home">
+          <span class="brand-mark">SE</span>
+          <span>streisandeffect.org</span>
+        </a>
+        <div class="nav-links">
+          <a href="/collections">Collections</a>
+          <a href="/about">About</a>
+          <a href="/verify">Verify</a>
+          <a href="/legal">Legal</a>
+          <a href="/transparency">Transparency</a>
+        </div>
+      </nav>
+    </header>
+
+    <main id="content" class="page-shell">
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        Preserving records for public-interest research, criticism, accountability, and historical memory.
+      </p>
+      <p class="fine-print">
+        Hosting a document does not imply endorsement of its claims, framing, or conclusions.
+      </p>
+    </footer>
+  </body>
+</html>

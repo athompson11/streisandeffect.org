@@ -1,0 +1,75 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { documentStatusLabel, formatBytes, getCollections, hasDownloads, type ArchiveCollection, type ArchiveDocument } from '../../data/archive';
+
+export function getStaticPaths() {
+  return getCollections().flatMap((collection) =>
+    collection.documents.map((document) => ({
+      params: { collectionSlug: collection.slug, documentSlug: document.slug },
+      props: { collection, document }
+    }))
+  );
+}
+
+interface Props {
+  collection: ArchiveCollection;
+  document: ArchiveDocument;
+}
+
+const { collection, document } = Astro.props;
+---
+<BaseLayout title={document.title} description={document.summary}>
+  <section class="prose">
+    <p class="eyebrow">Document</p>
+    <h1>{document.title}</h1>
+    <p class="lede">{document.summary}</p>
+    <div class="badge-row">
+      <span class="badge">{documentStatusLabel(document.status)}</span>
+      {document.warnings.map((warning) => <span class="badge">{warning}</span>)}
+    </div>
+  </section>
+
+  <section class="section metadata-panel">
+    <h2>Provenance</h2>
+    <table class="meta-table">
+      <tbody>
+        <tr><th>Collection</th><td><a href={`/${collection.slug}`}>{collection.title}</a></td></tr>
+        <tr><th>Publisher</th><td>{document.publisher}</td></tr>
+        <tr><th>Original URL</th><td>{document.originalUrl ? <a href={document.originalUrl}>{document.originalUrl}</a> : 'Unknown'}</td></tr>
+        <tr><th>Archived original</th><td>{document.archivedOriginalUrl ? <a href={document.archivedOriginalUrl}>{document.archivedOriginalUrl}</a> : 'Pending'}</td></tr>
+        <tr><th>Publication date</th><td>{document.publicationDate ?? 'Unknown'}</td></tr>
+        <tr><th>Removal discovered</th><td>{document.removalDiscoveredDate ?? 'Unknown'}</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="section metadata-panel">
+    <h2>Verification</h2>
+    <table class="meta-table">
+      <tbody>
+        <tr><th>File name</th><td>{document.fileName ?? 'Pending'}</td></tr>
+        <tr><th>File type</th><td>{document.fileType ?? 'Pending'}</td></tr>
+        <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)}</td></tr>
+        <tr><th>SHA-256</th><td>{document.sha256 ? <code class="checksum">{document.sha256}</code> : 'Pending'}</td></tr>
+      </tbody>
+    </table>
+    <p><a href="/verify">How to verify SHA-256 checksums →</a></p>
+  </section>
+
+  <section class="section metadata-panel">
+    <h2>Downloads</h2>
+    {hasDownloads(document) ? (
+      <div class="actions">
+        {document.primaryDownloadUrl && <a class="button" href={document.primaryDownloadUrl}>Download primary copy</a>}
+        {document.mirrorUrls?.map((url, index) => <a class="button secondary" href={url}>Mirror {index + 1}</a>)}
+      </div>
+    ) : (
+      <p>No public download link is available for this document yet.</p>
+    )}
+  </section>
+
+  <section class="section prose">
+    <h2>Why hosted</h2>
+    <p>{document.whyHosted}</p>
+  </section>
+</BaseLayout>

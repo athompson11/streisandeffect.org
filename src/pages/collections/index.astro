@@ -1,0 +1,33 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollections } from '../../data/archive';
+
+const collections = getCollections();
+---
+<BaseLayout title="Collections" description="Browse archived document collections hosted by streisandeffect.org.">
+  <section class="prose">
+    <p class="eyebrow">Archive index</p>
+    <h1>Collections</h1>
+    <p class="lede">
+      Each collection is a curated page explaining what was preserved, why the archive hosts it, and how visitors can verify the files.
+    </p>
+  </section>
+
+  <section class="section document-list">
+    {collections.map((collection) => (
+      <article class="document-card">
+        <header>
+          <div>
+            <h3><a href={`/${collection.slug}`}>{collection.title}</a></h3>
+            <p>{collection.summary}</p>
+          </div>
+          <span class="badge">{collection.status}</span>
+        </header>
+        {collection.contentWarning && <p><strong>Content note:</strong> {collection.contentWarning}</p>}
+        <div class="badge-row">
+          {collection.topics.map((topic) => <span class="badge">{topic}</span>)}
+        </div>
+      </article>
+    ))}
+  </section>
+</BaseLayout>
