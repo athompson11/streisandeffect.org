@@ -10,12 +10,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <section class="section callout warning">
-    <h2>Not legal advice</h2>
-    <p>
-      This page describes the archive’s operational review process. It is not legal advice and does not claim any legal protection or eligibility that has not been verified.
-    </p>
-  </section>
+  <aside class="notice warning" aria-label="Legal and correction scope">
+    <strong>About this page</strong>
+    <p>This page explains how to send a correction or takedown request. It does not determine anyone’s legal rights or the outcome of a request.</p>
+  </aside>
 
   <section class="section prose">
     <h2>Request categories</h2>
@@ -43,24 +41,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <section class="section prose">
-    <h2>Review process</h2>
-    <ol class="kicker-list">
-      <li>Acknowledge receipt when practical.</li>
-      <li>Preserve the request, cited URLs, and current metadata state.</li>
-      <li>Check whether the request identifies a real legal, privacy, safety, provenance, or factual issue.</li>
-      <li>Decide whether to correct metadata, add context, temporarily disable downloads, remove material, reject the request, or seek counsel.</li>
-      <li>Record the outcome for the transparency log when appropriate.</li>
-    </ol>
+    <h2>How requests are considered</h2>
+    <p>Requests are more useful when they identify the specific page, file, or statement at issue and include supporting information. The archive may consider provenance, privacy, safety, factual context, copyright, and other relevant concerns when responding.</p>
+    <p>A request does not itself establish that material will be changed, removed, or kept available.</p>
   </section>
 
   <section class="section prose">
-    <h2>Versioned correction policy</h2>
-    <ul class="kicker-list">
-      <li>Metadata corrections are dated.</li>
-      <li>Material contextual changes are recorded.</li>
-      <li>Files are not silently replaced.</li>
-      <li>Replacement files receive new hashes and version information.</li>
-      <li>Previous metadata states remain documented when safe.</li>
-    </ul>
+    <h2>Current public record</h2>
+    <p>This site does not currently publish a public log of requests or historical record revisions. Current record pages show the metadata and checksum associated with the copy presented there.</p>
   </section>
 </BaseLayout>

@@ -45,6 +45,7 @@ function isCurrent(href: string): boolean {
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    <meta name="referrer" content="no-referrer" />
     <link rel="canonical" href={canonical} />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="streisandeffect.org" />
@@ -58,6 +59,12 @@ function isCurrent(href: string): boolean {
     <meta name="twitter:image" content={imageUrl} />
     <title>{pageTitle}</title>
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <script is:inline>
+      try {
+        const theme = localStorage.getItem('se-theme');
+        if (theme === 'light' || theme === 'dark') document.documentElement.dataset.theme = theme;
+      } catch {}
+    </script>
   </head>
   <body>
     <a class="skip-link" href="#content">Skip to content</a>
@@ -72,6 +79,14 @@ function isCurrent(href: string): boolean {
             <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>
           ))}
         </div>
+        <label class="theme-control">
+          <span>Theme</span>
+          <select data-theme-select aria-label="Choose colour theme">
+            <option value="system">System</option>
+            <option value="light">Light</option>
+            <option value="dark">Dark</option>
+          </select>
+        </label>
       </nav>
     </header>
 
@@ -81,7 +96,7 @@ function isCurrent(href: string): boolean {
 
     <footer class="site-footer">
       <nav class="footer-links" aria-label="Footer navigation">
-        {footerItems.map(([label, href]) => <a href={href}>{label}</a>)}
+        {footerItems.map(([label, href]) => <a href={href} aria-current={isCurrent(href) ? 'page' : undefined}>{label}</a>)}
       </nav>
       <p>
         Public-interest archiving for research, criticism, accountability, and historical memory.
@@ -90,5 +105,8 @@ function isCurrent(href: string): boolean {
         Hosting a document does not imply endorsement of every claim, framing, or conclusion inside it.
       </p>
     </footer>
+    <script>
+      import '../scripts/archive-ui';
+    </script>
   </body>
 </html>

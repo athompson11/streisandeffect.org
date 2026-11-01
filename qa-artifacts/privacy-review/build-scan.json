@@ -1,0 +1,39 @@
+{
+  "htmlPages": 12,
+  "missingNoReferrer": [],
+  "assetFiles": 20,
+  "urls": [
+    "http://www.google.com/schemas/sitemap-image/1.1",
+    "http://www.google.com/schemas/sitemap-news/0.9",
+    "http://www.google.com/schemas/sitemap-video/1.1",
+    "http://www.sitemaps.org/schemas/sitemap/0.9",
+    "http://www.w3.org/1999/xhtml",
+    "http://www.w3.org/2000/svg",
+    "https://schema.org",
+    "https://streisandeffect.org/",
+    "https://streisandeffect.org/about/",
+    "https://streisandeffect.org/accessibility/",
+    "https://streisandeffect.org/amnestyinternational/",
+    "https://streisandeffect.org/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026/",
+    "https://streisandeffect.org/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026/",
+    "https://streisandeffect.org/collections/",
+    "https://streisandeffect.org/documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf",
+    "https://streisandeffect.org/documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf",
+    "https://streisandeffect.org/legal/",
+    "https://streisandeffect.org/privacy/",
+    "https://streisandeffect.org/sitemap-0.xml",
+    "https://streisandeffect.org/social-preview.svg",
+    "https://streisandeffect.org/submit/",
+    "https://streisandeffect.org/transparency/",
+    "https://streisandeffect.org/verify/",
+    "https://www.amnesty.org.uk/briefing-review/"
+  ],
+  "forbidden": {
+    "preconnect": false,
+    "prefetch": false,
+    "remoteScript": false,
+    "remoteStyle": false,
+    "outboundApi": false
+  },
+  "docsPublished": false
+}

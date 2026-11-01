@@ -8,7 +8,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p class="lede">
       This page describes what information the archive collects through public browsing and email contact.
     </p>
-    <p class="last-reviewed">Last updated: 2026-08-26</p>
+    <p class="last-reviewed">Last updated: 2026-09-07</p>
   </section>
 
   <section class="section prose">
@@ -16,6 +16,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <p>
       The public site is static. It does not use site analytics or set first-party tracking cookies. Basic server and network logs may still be created by hosting, DNS, security, or delivery services; those logs can include IP address, user agent, requested URL, timestamp, and error information.
     </p>
+  </section>
+
+  <section class="section prose">
+    <h2>Browser-side controls</h2>
+    <p>The theme selector works without saving a preference. If a visitor explicitly chooses Light or Dark, the browser may store that choice locally as <code>se-theme</code> with the value <code>light</code> or <code>dark</code>. Choosing System removes that local choice.</p>
+    <p>Copy buttons write a citation or checksum to the browser clipboard only after the visitor activates the button. The archive does not receive clipboard contents.</p>
   </section>
 
   <section class="section prose">

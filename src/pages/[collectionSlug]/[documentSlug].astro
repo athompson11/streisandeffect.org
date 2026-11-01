@@ -18,6 +18,8 @@ interface Props {
 
 const { collection, document } = Astro.props;
 const pageUrl = new URL(`/${collection.slug}/${document.slug}/`, Astro.site ?? 'https://streisandeffect.org').toString();
+const publicationDate = document.bestKnownPublicationDate ?? document.publicationDate ?? 'Not listed';
+const citation = `${document.title}. ${document.publisher}. Known publication date: ${publicationDate}. Preserved copy of a withdrawn report. Archive record: ${pageUrl}`;
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'DigitalDocument',
@@ -40,41 +42,48 @@ const structuredData = {
 <BaseLayout title={document.title} description={document.neutralDescription}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <section class="prose">
-    <p class="eyebrow">Document metadata</p>
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/collections/">Collections</a><span aria-hidden="true">/</span><a href={`/${collection.slug}/`}>{collection.shortTitle}</a><span aria-hidden="true">/</span><span aria-current="page">{document.title}</span>
+  </nav>
+
+  <section class="prose" id="overview">
+    <p class="eyebrow">Document record</p>
     <h1>{document.title}</h1>
     <p class="lede">{document.neutralDescription}</p>
     <p class="last-reviewed">Last metadata review: {document.lastReviewed}</p>
-    <div class="status-banner" role="note" aria-label="Document status">
-      <div>
-        <strong>Publisher status</strong>
-        <p>{document.publisherStatus}</p>
-      </div>
-      <div>
-        <strong>Archive status</strong>
-        <p>{document.archiveStatus}</p>
-      </div>
-    </div>
+    <dl class="status-list" aria-label="Document status">
+      <div><dt>Publisher status</dt><dd>{document.publisherStatus}</dd></div>
+      <div><dt>Archive status</dt><dd>{document.archiveStatus}</dd></div>
+    </dl>
   </section>
 
-  <section class="section publisher-callout">
-    <span class="layer-label">Publisher statement</span>
+  <nav class="toc" data-toc aria-label="On this page">
+    <strong>On this page</strong>
+    <a href="#publisher-statement">Publisher statement</a>
+    <a href="#provenance">Provenance</a>
+    <a href="#verification">Verification</a>
+    <a href="#downloads">Downloads</a>
+    <a href="#archive-note">Archive note</a>
+    <a href="#sources">Sources</a>
+    <a href="#corrections">Corrections</a>
+  </nav>
+
+  <section class="section editorial-section" id="publisher-statement">
+    <p class="layer-label">Publisher statement</p>
     <h2>Publisher’s current position</h2>
     <p>{document.publisherCurrentPosition}</p>
-    <p>
-      Amnesty’s statement says the July report bypassed internal review and fell short of its research and editorial standards. This archive does not imply that either withdrawn report remains endorsed by Amnesty International UK.
-    </p>
+    <p>Amnesty’s statement says the July report bypassed internal review and fell short of its research and editorial standards. This archive does not imply that either withdrawn report remains endorsed by Amnesty International UK.</p>
     <p><a href="https://www.amnesty.org.uk/briefing-review/">Read Amnesty International UK’s statement →</a></p>
   </section>
 
-  <section class="section metadata-panel">
-    <span class="layer-label">Provenance</span>
+  <section class="section record-entry" id="provenance">
+    <p class="layer-label">Provenance</p>
     <h2>Provenance</h2>
-    <table class="meta-table provenance-table">
+    <table class="meta-table">
       <tbody>
         <tr><th>Collection</th><td><a href={`/${collection.slug}/`}>{collection.title}</a></td></tr>
         <tr><th>Publisher</th><td>{document.publisher}</td></tr>
-        <tr><th>Publication date</th><td>{document.bestKnownPublicationDate ?? document.publicationDate}</td></tr>
+        <tr><th>Publication date</th><td>{publicationDate}</td></tr>
         <tr><th>Publisher status</th><td>{document.publisherStatus}</td></tr>
         <tr><th>Removal status</th><td>{document.removalStatus}</td></tr>
         <tr><th>Removal discovered</th><td>{document.removalDiscoveredDate ?? 'Not listed'}</td></tr>
@@ -84,73 +93,59 @@ const structuredData = {
         <tr><th>Archived original URL</th><td>{document.archivedOriginalUrl ? <a href={document.archivedOriginalUrl}>{document.archivedOriginalUrl}</a> : document.archivedOriginalUrlNote}</td></tr>
       </tbody>
     </table>
+    <div class="copy-tool">
+      <strong>Suggested citation</strong>
+      <p class="copy-value" id="citation-value">{citation}</p>
+      <button class="copy-button secondary" type="button" data-copy-target="citation-value" data-copy-status="citation-copy-status">Copy citation</button>
+      <p class="copy-status" id="citation-copy-status" role="status" aria-live="polite"></p>
+    </div>
   </section>
 
-  <section class="section metadata-panel">
-    <span class="layer-label">Verification</span>
+  <section class="section record-entry" id="verification">
+    <p class="layer-label">Verification</p>
     <h2>Verification data</h2>
-    <table class="meta-table provenance-table">
+    <table class="meta-table">
       <tbody>
         <tr><th>File name</th><td>{document.fileName}</td></tr>
         <tr><th>MIME type</th><td>{document.fileType}</td></tr>
         <tr><th>Page count</th><td>{document.pageCount}</td></tr>
         <tr><th>File size</th><td>{formatBytes(document.fileSizeBytes)} ({document.fileSizeBytes} bytes)</td></tr>
-        <tr><th>SHA-256</th><td><span class="checksum-block"><code>{document.sha256}</code></span></td></tr>
+        <tr><th>SHA-256</th><td><code class="copy-value" id="checksum-value">{document.sha256}</code></td></tr>
       </tbody>
     </table>
-    <p>
-      A matching SHA-256 checksum verifies that the downloaded bytes match this archive copy. It does not independently prove authorship or authenticity. <a href="/verify/">How to verify checksums →</a>
-    </p>
+    <div class="copy-tool">
+      <button class="copy-button secondary" type="button" data-copy-target="checksum-value" data-copy-status="checksum-copy-status">Copy SHA-256</button>
+      <p class="copy-status" id="checksum-copy-status" role="status" aria-live="polite"></p>
+    </div>
+    <p>A matching SHA-256 checksum verifies that the downloaded bytes match this archive copy. It does not independently prove authorship or authenticity. <a href="/verify/">How to verify checksums →</a></p>
   </section>
 
-  <section class="section metadata-panel">
-    <span class="layer-label">Downloads</span>
+  <section class="section record-entry" id="downloads">
+    <p class="layer-label">Downloads</p>
     <h2>Downloads</h2>
-    <div class="status-banner" role="note" aria-label="Publisher status before download">
-      <div>
-        <strong>Publisher status</strong>
-        <p>{document.publisherStatus}</p>
-      </div>
-      <div>
-        <strong>Archive status</strong>
-        <p>{document.archiveStatus}</p>
-      </div>
-    </div>
+    <aside class="notice" aria-label="Publisher status before download">
+      <strong>Publisher status: {document.publisherStatus}</strong>
+      <p>Archive status: {document.archiveStatus}</p>
+    </aside>
     {hasDownloads(document) ? (
       <div class="actions">
         <a class="button" href={document.primaryDownloadUrl}>Download preserved copy</a>
-        {document.mirrorUrls.length > 0 ? document.mirrorUrls.map((url, index) => <a class="button secondary" href={url}>Independent mirror {index + 1}</a>) : <p>No independent mirror URLs are listed for this document. Mirrors may be added if verified.</p>}
+        {document.mirrorUrls.length > 0 ? document.mirrorUrls.map((url, index) => <a class="button secondary" href={url}>Independent mirror {index + 1}</a>) : <p>No independent mirror URLs are listed for this document.</p>}
       </div>
     ) : (
       <p>No public download link is listed for this document.</p>
     )}
   </section>
 
-  <section class="section layer" aria-labelledby="timeline-heading">
-    <span class="layer-label">Verified events</span>
-    <h2 id="timeline-heading">Event timeline</h2>
-    <ol class="timeline">
-      {collection.verifiedEvents.map((event) => (
-        <li>
-          <time datetime={event.date}>{event.date}</time>
-          <div>
-            <h3>{event.label}</h3>
-            <p>{event.description}</p>
-            {event.sourceUrl && <p><a href={event.sourceUrl}>{event.sourceLabel ?? 'Source'} →</a></p>}
-          </div>
-        </li>
-      ))}
-    </ol>
-  </section>
-
-  <section class="section editorial-callout">
-    <span class="layer-label">Archive editorial note</span>
+  <section class="section editorial-section" id="archive-note">
+    <p class="layer-label">Archive editorial note</p>
     <h2>Why the archive preserves it</h2>
     <p>{document.whyHosted}</p>
+    <p>For the collection-wide chronology, see the <a href={`/${collection.slug}/#timeline`}>collection timeline</a>.</p>
   </section>
 
-  <section class="section layer">
-    <span class="layer-label">External response</span>
+  <section class="section editorial-section" id="sources">
+    <p class="layer-label">External response</p>
     <h2>Criticism, responses, and additional context</h2>
     <ul class="source-list">
       {document.sources.map((source) => (
@@ -162,19 +157,17 @@ const structuredData = {
       ))}
     </ul>
     {document.contentWarnings.length > 0 && (
-      <div class="fact-callout">
-        <h3>Content and safety notes</h3>
+      <aside class="notice warning" aria-label="Content and safety notes">
+        <strong>Content and safety notes</strong>
         <ul class="kicker-list">
           {document.contentWarnings.map((warning) => <li>{warning}</li>)}
         </ul>
-      </div>
+      </aside>
     )}
   </section>
 
-  <section class="section prose">
+  <section class="section prose" id="corrections">
     <h2>Corrections and takedown link</h2>
-    <p>
-      Send provenance corrections, factual context, privacy concerns, safety concerns, or legal complaints through the <a href="/legal/">legal and correction process</a>.
-    </p>
+    <p>Send provenance corrections, factual context, privacy concerns, safety concerns, or legal complaints through the <a href="/legal/">legal and correction process</a>.</p>
   </section>
 </BaseLayout>

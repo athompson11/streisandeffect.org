@@ -1,0 +1,170 @@
+[
+  {
+    "url": "https://streisandeffect.org/",
+    "title": "\ud83d\udc34 Records should not vanish quietly | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/collections/",
+    "title": "\ud83d\udc34 Collections | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/amnestyinternational/",
+    "title": "\ud83d\udc34 Amnesty International UK Withdrawn Reports Archive | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026/",
+    "title": "\ud83d\udc34 A growing threat: the anti-rights movement in the UK | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026/",
+    "title": "\ud83d\udc34 Like a snowball: the growth and impact of the gender critical movement in the UK | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/about/",
+    "title": "\ud83d\udc34 About | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/accessibility/",
+    "title": "\ud83d\udc34 Accessibility | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/legal/",
+    "title": "\ud83d\udc34 Legal and correction process | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/privacy/",
+    "title": "\ud83d\udc34 Privacy | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/submit/",
+    "title": "\ud83d\udc34 Submit a candidate document | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/transparency/",
+    "title": "\ud83d\udc34 Transparency | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  },
+  {
+    "url": "https://streisandeffect.org/verify/",
+    "title": "\ud83d\udc34 Verify downloads | streisandeffect.org",
+    "https": true,
+    "beacon": true,
+    "emailObfuscation": false,
+    "cfRum": true,
+    "thirdPartyResources": [
+      "https://static.cloudflareinsights.com"
+    ],
+    "noReferrer": "no-referrer",
+    "themeControl": true,
+    "cardClasses": []
+  }
+]

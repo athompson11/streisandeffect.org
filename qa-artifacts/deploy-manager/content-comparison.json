@@ -1,0 +1,146 @@
+{
+  "html": [
+    {
+      "route": "/about/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/accessibility/",
+      "visible_text_matches_build": false,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/amnestyinternational/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/collections/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/legal/",
+      "visible_text_matches_build": false,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/privacy/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/submit/",
+      "visible_text_matches_build": false,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js",
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/transparency/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    },
+    {
+      "route": "/verify/",
+      "visible_text_matches_build": true,
+      "stylesheet_refs_match": true,
+      "referrer": [
+        "no-referrer"
+      ],
+      "extra_script_sources": [
+        "https://static.cloudflareinsights.com/beacon.min.js/v31edd6df95cf4e85bb4c19e7a9bdbcba1788362987495"
+      ]
+    }
+  ],
+  "css": [
+    {
+      "path": "/_astro/BaseLayout.DdffxMpd.css",
+      "matches_build": true,
+      "sha256": "cb8bbb223431dea85f25d6b9e7c1dc1ef80911bc0e4cc74485803c6513ded655"
+    }
+  ]
+}

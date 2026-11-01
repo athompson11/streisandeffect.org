@@ -10,6 +10,7 @@
     "check": "astro check && npm run validate:content",
     "preview": "astro preview",
     "validate:content": "node scripts/validate-content.mjs",
+    "test:content-validation": "node --test tests/content-validation/*.test.mjs",
     "ingest:document": "node scripts/ingest-document.mjs"
   },
   "dependencies": {

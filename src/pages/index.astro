@@ -20,19 +20,13 @@ const collections = getCollections();
     </div>
   </section>
 
-  <section class="section prose" aria-labelledby="how-it-works">
-    <h2 id="how-it-works">How to read this archive</h2>
-    <p>
-      The archive has an explicit pro-trans editorial position. It does not treat opposition to trans rights as neutral, but factual claims still need evidence. Publisher statements, external criticism, and archive opinion are labelled so readers can tell what is known, what is disputed, and what the archive operator concludes.
-    </p>
-  </section>
-
 
   <section class="section" aria-labelledby="collections-heading">
+    <p class="eyebrow">Available records</p>
     <h2 id="collections-heading">Collections</h2>
     <div class="document-list">
       {collections.map((collection) => (
-        <article class="document-card">
+        <article class="document-entry">
           <header>
             <div>
               <h3><a href={`/${collection.slug}/`}>{collection.title}</a></h3>
@@ -40,15 +34,25 @@ const collections = getCollections();
             </div>
             <span class="document-count">{collection.documents.length} documents</span>
           </header>
-          <div class="status-grid" aria-label="Collection status">
+          <dl class="status-list" aria-label="Collection status">
             <div>
-              <strong>Publisher status</strong>
-              <p>{collection.publisherStatus}</p>
+              <dt>Publisher status</dt>
+              <dd>{collection.publisherStatus}</dd>
             </div>
             <div>
-              <strong>Archive status</strong>
-              <p>{collection.archiveStatus}</p>
+              <dt>Archive status</dt>
+              <dd>{collection.archiveStatus}</dd>
             </div>
+          </dl>
+          <div class="document-list" aria-label={`${collection.title} documents`}>
+            {collection.documents.map((document) => (
+              <article class="document-entry">
+                <p class="entry-label">{document.bestKnownPublicationDate ?? document.publicationDate ?? 'Publication date not listed'}</p>
+                <h3><a href={`/${collection.slug}/${document.slug}/`}>{document.title}</a></h3>
+                <p>{document.publisherStatus}</p>
+                <p class="document-action"><a href={`/${collection.slug}/${document.slug}/`}>View record →</a></p>
+              </article>
+            ))}
           </div>
           <p class="document-action"><a href={`/${collection.slug}/`}>Open collection →</a></p>
         </article>

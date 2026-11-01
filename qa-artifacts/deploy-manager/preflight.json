@@ -1,0 +1,142 @@
+[
+  {
+    "path": "/about/",
+    "status": 200,
+    "bytes": 5414,
+    "sha256": "b2bba8f78d5b1a8b1dc123bc389cc4ae16a3069bc41882a9a01542824fefdcf3",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/accessibility/",
+    "status": 200,
+    "bytes": 4288,
+    "sha256": "eb454ff0f64cf706a7daac3e74980f132ea7654227c1f07fc99d7f98fd376cb7",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026/",
+    "status": 200,
+    "bytes": 12271,
+    "sha256": "d8fef4c8071533b2f018ee06c4dba8d38b7738f74f0aab3b9abbf562e08be0f5",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/amnestyinternational/",
+    "status": 200,
+    "bytes": 15610,
+    "sha256": "af5dbccbe916b8025cf484f4e38d46c9ca0a383cf1c065c42aef30736fc7b252",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026/",
+    "status": 200,
+    "bytes": 12405,
+    "sha256": "f9083b710cd811ac0feeb230216890715e91de0c4628a8c89a81c405081dae0f",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/collections/",
+    "status": 200,
+    "bytes": 4168,
+    "sha256": "4a68b19e532ab71ae038d695ed0e39511607268281c92c6d11155d119075d1a3",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/documents/amnestyinternational/a-growing-threat-the-anti-rights-movement-in-the-uk-july-2026.pdf",
+    "status": 200,
+    "bytes": 353758,
+    "sha256": "d11534aa4fccdf0e19a4390b94586ec8ec23fbbac842acf03961bdbdf97cf387",
+    "matches_local": true,
+    "content_type": "application/pdf",
+    "cache": "MISS",
+    "age": null
+  },
+  {
+    "path": "/documents/amnestyinternational/like-a-snowball-the-growth-and-impact-of-the-gender-critical-movement-in-the-uk-may-2026.pdf",
+    "status": 200,
+    "bytes": 411751,
+    "sha256": "f77a5315df3fa0204045d1d7ae2483ab57c075ea95674e96595edf3526144e5f",
+    "matches_local": true,
+    "content_type": "application/pdf",
+    "cache": "MISS",
+    "age": null
+  },
+  {
+    "path": "/",
+    "status": 200,
+    "bytes": 4813,
+    "sha256": "dfa323fa4de3d41a3b60972e85dee4586552c0f8c154f34d04b716866ccc45df",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/legal/",
+    "status": 200,
+    "bytes": 5887,
+    "sha256": "d6cf96baf7a45dd04b49be35294eef704a02e66a995b3359dc40d4ee108c8ca8",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/privacy/",
+    "status": 200,
+    "bytes": 3965,
+    "sha256": "dda606a3b96e4415f6255896c1f5b5a62828ef68a6ce5fd30a11a04f9403925a",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/submit/",
+    "status": 200,
+    "bytes": 5935,
+    "sha256": "47b8c7a9978defaa4444f10b2d82d939c9d700ef570b7e8fa9643f916d66b0c8",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/transparency/",
+    "status": 200,
+    "bytes": 3813,
+    "sha256": "d4f69eb50f07bb2ec43710e4a382032d6a2116b172d576f24b28e27103a57a29",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  },
+  {
+    "path": "/verify/",
+    "status": 200,
+    "bytes": 4229,
+    "sha256": "34fcb89aa2cad9f17cdb3fbefdca224cf97c04814f388b17671e42842ebfb290",
+    "matches_local": false,
+    "content_type": "text/html",
+    "cache": "DYNAMIC",
+    "age": null
+  }
+]

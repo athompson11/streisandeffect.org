@@ -10,12 +10,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <section class="section callout warning">
+  <aside class="notice warning" aria-label="Email privacy notice">
     <h2>Email is not a secure anonymous channel</h2>
     <p>
       Ordinary email may expose your address, routing metadata, and message contents to mail providers. Submissions are not automatically confidential. Do not use this channel for private, stolen, hacked, dangerous, or highly sensitive material.
     </p>
-  </section>
+  </aside>
 
   <section class="section prose">
     <h2>Where to send a candidate</h2>
@@ -51,16 +51,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </ul>
   </section>
 
-  <section class="section metadata-panel">
-    <h2>Review checklist</h2>
-    <table class="meta-table">
-      <tbody>
-        <tr><th>Public interest</th><td>Does preserving this document help accountability, research, criticism, or historical memory?</td></tr>
-        <tr><th>Provenance</th><td>Can the archive identify where the document came from and whether the copy is authentic enough to present?</td></tr>
-        <tr><th>Context</th><td>Can the archive explain the document without endorsing harmful or contested claims?</td></tr>
-        <tr><th>Risk</th><td>Are there legal, privacy, safety, or provider-policy risks that need review before hosting?</td></tr>
-        <tr><th>Retention</th><td>Submission messages may be retained while evaluating the lead and documenting any resulting archive record. A fixed retention schedule is not currently published.</td></tr>
-      </tbody>
-    </table>
+  <section class="section prose">
+    <h2>After you submit</h2>
+    <p>
+      The archive may review a lead's source, context, public interest, and any privacy or safety concerns before deciding whether to pursue it.
+    </p>
+    <p>
+      Sending a lead does not guarantee a response, publication, preservation, or hosting.
+    </p>
+    <p>
+      Submission messages may be retained while evaluating a lead and documenting any resulting archive record. A fixed retention schedule is not currently published.
+    </p>
   </section>
 </BaseLayout>

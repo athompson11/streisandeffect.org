@@ -14,6 +14,8 @@ interface Props {
 }
 
 const { collection } = Astro.props;
+const publicResponseDescription = (description: string) =>
+  description.replace(' The archive will add them when direct source URLs are verified.', '');
 const collectionUrl = new URL(`/${collection.slug}/`, Astro.site ?? 'https://streisandeffect.org').toString();
 const structuredData = {
   '@context': 'https://schema.org',
@@ -34,39 +36,68 @@ const structuredData = {
 <BaseLayout title={collection.title} description={collection.summary}>
   <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData)} />
 
-  <section class="collection-hero">
+  <nav class="breadcrumb" aria-label="Breadcrumb">
+    <a href="/">Home</a><span aria-hidden="true">/</span><a href="/collections/">Collections</a><span aria-hidden="true">/</span><span aria-current="page">{collection.shortTitle}</span>
+  </nav>
+
+  <section class="collection-hero" id="overview">
     <p class="eyebrow">Collection</p>
     <h1>{collection.title}</h1>
     <p class="lede">{collection.summary}</p>
     <p class="last-reviewed">Last metadata review: {collection.lastReviewed}</p>
-    <div class="status-banner" role="note" aria-label="Collection status">
-      <div>
-        <strong>Publisher status</strong>
-        <p>{collection.publisherStatus}</p>
-      </div>
-      <div>
-        <strong>Archive status</strong>
-        <p>{collection.archiveStatus}</p>
-      </div>
-    </div>
+    <dl class="status-list" aria-label="Collection status">
+      <div><dt>Publisher status</dt><dd>{collection.publisherStatus}</dd></div>
+      <div><dt>Archive status</dt><dd>{collection.archiveStatus}</dd></div>
+    </dl>
   </section>
 
   {collection.contentWarning && (
-    <section class="section callout warning" aria-label="Content warning">
-      <h2>Content warning</h2>
+    <aside class="notice warning" aria-label="Content warning">
+      <strong>Content warning</strong>
       <p>{collection.contentWarning}</p>
-    </section>
+    </aside>
   )}
 
-  <section class="section publisher-callout">
-    <span class="layer-label">Publisher statement</span>
+  <section class="section editorial-section" id="publisher-statement">
+    <p class="layer-label">Publisher statement</p>
     <h2>Amnesty’s current position</h2>
     <p>{collection.amnestyPosition}</p>
     <p><a href="https://www.amnesty.org.uk/briefing-review/">Read Amnesty International UK’s statement →</a></p>
   </section>
 
-  <section class="section layer" aria-labelledby="timeline-heading">
-    <span class="layer-label">Verified events</span>
+  <nav class="toc" data-toc aria-label="On this page">
+    <strong>On this page</strong>
+    <a href="#documents">Documents</a>
+    <a href="#timeline">Timeline</a>
+    <a href="#archive-note">Archive note</a>
+    <a href="#sources">Sources</a>
+    <a href="#external-response">External response</a>
+    <a href="#corrections">Corrections</a>
+  </nav>
+
+  <section class="section" id="documents" aria-labelledby="documents-heading">
+    <p class="eyebrow">Preserved records</p>
+    <h2 id="documents-heading">Documents</h2>
+    <div class="document-list">
+      {collection.documents.map((document) => (
+        <article class="document-entry">
+          <p class="entry-label">{document.bestKnownPublicationDate ?? document.publicationDate ?? 'Publication date not listed'}</p>
+          <h3><a href={`/${collection.slug}/${document.slug}/`}>{document.title}</a></h3>
+          <p>{document.neutralDescription}</p>
+          <dl class="document-meta" aria-label={`${document.title} record summary`}>
+            <div><dt>Publisher</dt><dd>{document.publisher}</dd></div>
+            <div><dt>Publisher status</dt><dd>{document.publisherStatus}</dd></div>
+            <div><dt>Archive status</dt><dd>{documentStatusLabel(document.status)}</dd></div>
+            <div><dt>File size</dt><dd>{formatBytes(document.fileSizeBytes)}</dd></div>
+          </dl>
+          <p class="document-action"><a href={`/${collection.slug}/${document.slug}/`}>View record →</a></p>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="section editorial-section" id="timeline" aria-labelledby="timeline-heading">
+    <p class="layer-label">Documented and reported events</p>
     <h2 id="timeline-heading">Timeline</h2>
     <ol class="timeline">
       {collection.verifiedEvents.map((event) => (
@@ -82,48 +113,14 @@ const structuredData = {
     </ol>
   </section>
 
-  <section class="section editorial-callout">
-    <span class="layer-label">Archive editorial note</span>
+  <section class="section editorial-section" id="archive-note">
+    <p class="layer-label">Archive editorial note</p>
     <h2>Why this collection is preserved</h2>
     <p>{collection.archiveInterpretation}</p>
   </section>
 
-  <section class="section" aria-labelledby="documents-heading">
-    <h2 id="documents-heading">Documents</h2>
-    <div class="document-list">
-      {collection.documents.map((document) => (
-        <article class="document-card">
-          <header>
-            <div>
-              <h3><a href={`/${collection.slug}/${document.slug}/`}>{document.title}</a></h3>
-              <p>{document.neutralDescription}</p>
-            </div>
-            <span class="status-badge">{document.publisherStatus}</span>
-          </header>
-          <div class="status-grid" aria-label="Document status">
-            <div>
-              <strong>Publisher status</strong>
-              <p>{document.publisherStatus}</p>
-            </div>
-            <div>
-              <strong>Archive status</strong>
-              <p>{documentStatusLabel(document.status)}</p>
-            </div>
-          </div>
-          <dl class="document-meta">
-            <div><dt>Publisher</dt><dd>{document.publisher}</dd></div>
-            <div><dt>Publication date</dt><dd>{document.bestKnownPublicationDate ?? document.publicationDate}</dd></div>
-            <div><dt>File size</dt><dd>{formatBytes(document.fileSizeBytes)}</dd></div>
-            <div class="wide"><dt>SHA-256</dt><dd><code>{document.sha256}</code></dd></div>
-          </dl>
-          <p class="document-action"><a href={`/${collection.slug}/${document.slug}/`}>View provenance and downloads →</a></p>
-        </article>
-      ))}
-    </div>
-  </section>
-
-  <section class="section layer" aria-labelledby="sources-heading">
-    <span class="layer-label">Sources and context</span>
+  <section class="section editorial-section" id="sources" aria-labelledby="sources-heading">
+    <p class="layer-label">Sources and context</p>
     <h2 id="sources-heading">Source links</h2>
     <ul class="source-list">
       {collection.sources.map((source) => (
@@ -136,22 +133,20 @@ const structuredData = {
     </ul>
   </section>
 
-  <section class="section layer">
-    <span class="layer-label">External response</span>
+  <section class="section editorial-section" id="external-response">
+    <p class="layer-label">External response</p>
     <h2>Criticism and responses</h2>
     {collection.criticsStatements.map((statement) => (
-      <article>
+      <article class="document-entry">
         <h3>{statement.label}</h3>
-        <p>{statement.description}</p>
+        <p>{publicResponseDescription(statement.description)}</p>
         {statement.sourceUrl && <p><a href={statement.sourceUrl}>{statement.sourceLabel ?? 'Source'} →</a></p>}
       </article>
     ))}
   </section>
 
-  <section class="section prose">
+  <section class="section prose" id="corrections">
     <h2>Corrections and takedown requests</h2>
-    <p>
-      If this collection contains incorrect provenance, missing context, or material that should not be hosted, use the process described on the <a href="/legal/">legal and correction page</a>.
-    </p>
+    <p>If this collection contains incorrect provenance, missing context, or material that should not be hosted, use the process described on the <a href="/legal/">legal and correction page</a>.</p>
   </section>
 </BaseLayout>

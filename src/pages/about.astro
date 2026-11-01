@@ -20,32 +20,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <section class="section grid" aria-labelledby="criteria-heading">
-    <h2 id="criteria-heading" class="screen-reader-only">Inclusion criteria</h2>
-    <article class="card">
-      <h3>Public-interest value</h3>
-      <p>The document helps accountability, research, criticism, or historical memory.</p>
-    </article>
-    <article class="card">
-      <h3>Institutional significance</h3>
-      <p>The publisher, subject, removal, or dispute has institutional or political significance.</p>
-    </article>
-    <article class="card">
-      <h3>Verifiable provenance</h3>
-      <p>The archive can identify the source, copy history, file metadata, and remaining uncertainty.</p>
-    </article>
-    <article class="card">
-      <h3>Documented removal or change</h3>
-      <p>The record has been withdrawn, removed, materially changed, or made difficult to access.</p>
-    </article>
-    <article class="card">
-      <h3>Adequate context</h3>
-      <p>The page can explain the document without collapsing fact, criticism, and archive opinion together.</p>
-    </article>
-    <article class="card">
-      <h3>Acceptable risk</h3>
-      <p>Privacy, safety, legal, and provider-policy risks are weighed before publication.</p>
-    </article>
+  <section class="section prose" aria-labelledby="criteria-heading">
+    <h2 id="criteria-heading">Inclusion criteria</h2>
+    <dl class="document-list">
+      <div class="document-entry"><dt>Public-interest value</dt><dd>The document helps accountability, research, criticism, or historical memory.</dd></div>
+      <div class="document-entry"><dt>Institutional significance</dt><dd>The publisher, subject, removal, or dispute has institutional or political significance.</dd></div>
+      <div class="document-entry"><dt>Verifiable provenance</dt><dd>The archive can identify the source, copy history, file metadata, and remaining uncertainty.</dd></div>
+      <div class="document-entry"><dt>Documented removal or change</dt><dd>The record has been withdrawn, removed, materially changed, or made difficult to access.</dd></div>
+      <div class="document-entry"><dt>Adequate context</dt><dd>The page can explain the document without collapsing fact, criticism, and archive opinion together.</dd></div>
+      <div class="document-entry"><dt>Acceptable risk</dt><dd>Privacy, safety, legal, and provider-policy risks are weighed before publication.</dd></div>
+    </dl>
   </section>
 
   <section class="section prose">
@@ -62,7 +46,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="section prose">
     <h2>Corrections</h2>
     <p>
-      Corrections are welcomed. Metadata changes, material contextual changes, and file replacements are dated and recorded when safe. Files are not silently replaced; replacement files receive new hashes and version information.
+      Corrections are welcomed. This site does not currently publish a public change log. Record pages display their stated metadata and file checksums.
     </p>
   </section>
 </BaseLayout>

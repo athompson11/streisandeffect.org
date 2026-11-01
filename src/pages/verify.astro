@@ -10,20 +10,15 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </p>
   </section>
 
-  <section class="section grid" aria-labelledby="checksum-command-heading">
-    <h2 id="checksum-command-heading" class="screen-reader-only">Checksum commands</h2>
-    <article class="card">
-      <h3>Linux</h3>
-      <p><code>sha256sum file.pdf</code></p>
-    </article>
-    <article class="card">
-      <h3>macOS</h3>
-      <p><code>shasum -a 256 file.pdf</code></p>
-    </article>
-    <article class="card">
-      <h3>Windows PowerShell</h3>
-      <p><code>Get-FileHash .\file.pdf -Algorithm SHA256</code></p>
-    </article>
+  <section class="section prose" aria-labelledby="checksum-command-heading">
+    <h2 id="checksum-command-heading">Checksum commands</h2>
+    <table class="meta-table">
+      <tbody>
+        <tr><th>Linux</th><td><code>sha256sum file.pdf</code></td></tr>
+        <tr><th>macOS</th><td><code>shasum -a 256 file.pdf</code></td></tr>
+        <tr><th>Windows PowerShell</th><td><code>Get-FileHash .\file.pdf -Algorithm SHA256</code></td></tr>
+      </tbody>
+    </table>
   </section>
 
   <section class="section prose">
